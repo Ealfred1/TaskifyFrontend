@@ -1,68 +1,70 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@layer components {
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #8083ff, #4D70EF);
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  z-index: 1;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.input-con {
+    @apply relative my-6 mx-2;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+
+.input-con input {
+    transition: border-bottom-color 0.1s ease;
+    caret-color: purpleP;
+    @apply w-full h-14 py-2 px-4 text-sm border border-gray-500 outline-none rounded-xl text-gray-500 bg-transparent;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.pass-toggle{
+      color: #777;
+      font-size: 20px;
+      position: absolute;
+      right: 10px;
+      top: 19.5px;
+    }
+    
+.input-con input:focus,
+.input-con input:valid {
+  @apply border-purpleP border-[1.7px]
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.input-con label {
+      pointer-events: none;
+      transition: top 0.2s ease, font-size 0.1s ease, color 0.1s ease;
+      @apply absolute top-[20px] left-0 left-[15px] text-sm text-gray-400 bg-white py-0 px-2;
+    }
+
+    .input-con input:focus ~ label,
+    .input-con input:valid ~ label {
+      top: -8px;
+      color: purpleP;
+      font-size: 0.8rem;
+    }
+    
+.btn-auth {
+  @apply bg-purpleP w-full h-16 text-center rounded-lg text-white hover:opacity-80 text-lg;
+}
+
+.error-message {
+  @apply bg-red-300 bg-opacity-50 px-4 py-2 rounded-md text-red-600 border border-red-500 transition-all duration-200 ease-in-out mb-2;
+}
+
+}
+
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(45deg , black, #8083ff);
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
