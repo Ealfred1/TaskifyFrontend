@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import validateForm from '../utils/validateForm1'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import RegisterImage from '../assets/register.png'
 
 
 const RegisterPage = () => {
@@ -43,6 +44,9 @@ const RegisterPage = () => {
   
   return (
     <div className="flex flex-col justify-center items-center w-full h-screen">
+    
+      <img src={RegisterImage} alt="Register image" className="w-full h-52 md:h-64 object-contain" />
+    
       <h1 className="text-3xl text-gray-800 font-bold text-gradient"> Get Started</h1>
         <form className="mt-4 px-2 max-w-2xl w-full" method="post" onSubmit={handleSubmit}>
           <div className="flex justify-around w-full -mb-6">

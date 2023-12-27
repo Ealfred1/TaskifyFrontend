@@ -60,6 +60,30 @@
   @apply bg-red-300 bg-opacity-50 px-4 py-2 rounded-md text-red-600 border border-red-500 transition-all duration-200 ease-in-out my-4 mx-6 block;
 }
 
+.navbar {
+    @apply fixed top-0 w-full left-0 bg-white flex items-center justify-between px-6 py-4 z-50 shadow-sm;
+  }
+
+  .logo-items {
+    @apply flex items-center space-x-2 text-base font-semibold text-purpleP;
+  }
+
+  .search-bar {
+    @apply h-12 max-w-[430px] w-full hidden md:block ;
+  }
+
+  .search-bar input {
+    @apply h-full w-full rounded-full text-base outline-none bg-white text-gray-500 border border-gray-300 px-5;
+  }
+
+  .navbar-content {
+    @apply flex items-center space-x-6;
+  }
+  
+  .navbar-content .i {
+    @apply cursor-pointer text-base text-gray-500;
+  }
+
 }
 
   .text-gradient {
