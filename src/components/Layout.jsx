@@ -16,7 +16,7 @@ const Layout = () => {
       <div>
         <Navbar handleSideBarToggle={handleSideBarToggle} />
         <SideBar sideBarClose={sideBarClose} />
-        <div className="max-w-4xl mx-auto mt-24">
+        <div className="max-w-4xl mx-auto mt-24 ml-[90px]">
           <Outlet />
         </div>
       </div>

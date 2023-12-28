@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faBell, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = ({ handleSideBarToggle }) => {
   
@@ -15,8 +15,8 @@ const Navbar = ({ handleSideBarToggle }) => {
       </div>
       
       <div className="navbar-content">
-        <FontAwesomeIcon icon={faSun} className="i" />
-        <FontAwesomeIcon icon={faBell} className="i" />
+        <i className='bx bx-sun i' id="darkLight"></i>
+        <i className='bx bx-bell i'></i>
       </div>
       
     </nav>
