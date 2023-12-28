@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 @layer components {
 
 .circle {
@@ -61,7 +65,7 @@
 }
 
 .navbar {
-    @apply fixed top-0 w-full left-0 bg-white flex items-center justify-between px-6 py-4 z-50 shadow-sm;
+    @apply fixed top-0 w-full left-0 bg-white flex items-center justify-between px-6 py-4 shadow-sm z-[1000];
   }
 
   .logo-items {
@@ -83,6 +87,101 @@
   .navbar-content .i {
     @apply cursor-pointer text-base text-gray-500;
   }
+  
+  /* sidebar */
+.sidebar {
+  background-color: white;
+  width: 260px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 80px 20px;
+  z-index: 100;
+  overflow-y: scroll;
+  box-shadow: 0 0 1px #777;
+  transition: all 0.5s ease;
+}
+.sidebar.close {
+  padding: 60px 0;
+  width: 80px;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.menu_content {
+  position: relative;
+}
+.menu_title {
+  margin: 15px 0;
+  padding: 0 20px;
+  font-size: 18px;
+}
+.sidebar.close .menu_title {
+  padding: 6px 30px;
+}
+.menu_title::before {
+  color: #777;
+  white-space: nowrap;
+}
+.menu_dashboard::before {
+  content: "Task Control Panel";
+}
+
+.menu_setting::before {
+  content: "Setting";
+}
+.sidebar.close .menu_title::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 18px;
+  border-radius: 12px;
+  background: #777;
+}
+.menu_items {
+  padding: 0;
+  list-style: none;
+}
+.navlink_icon {
+  position: relative;
+  font-size: 22px;
+  min-width: 50px;
+  line-height: 40px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 6px;
+}
+.navlink_icon::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: calc(100% + 100px);
+  left: -20px;
+}
+.navlink_icon:hover {
+  background: #8083ff;
+}
+.sidebar .nav_link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #777;
+  white-space: nowrap;
+}
+.sidebar.close .navlink {
+  display: none;
+}
+.nav_link:hover {
+  color: white;
+  background: #8083ff;
+}
+.sidebar.close .nav_link:hover {
+  background: var(--white-color);
+}
 
 }
 
