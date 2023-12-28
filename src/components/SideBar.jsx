@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faBell, faSun } from '@fortawesome/free-solid-svg-icons'
 
-const SideBar = () => {
+const SideBar = ({ sideBarClose }) => {
   
   return (
-    <nav className="sidebar">
+    <nav className={sideBarClose ? 'sidebar' : 'sidebar close'}>
       <div className="menu_content">
         <ul className="menu_items space-y-6">
           <div className="menu_title menu_dashboard"></div> 
