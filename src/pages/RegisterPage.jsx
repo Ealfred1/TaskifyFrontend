@@ -4,6 +4,7 @@ import validateForm from '../utils/validateForm1'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import RegisterImage from '../assets/register.png'
+import axios from '../api/axios'
 
 
 const RegisterPage = () => {
@@ -18,6 +19,7 @@ const RegisterPage = () => {
   
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState({})
+  const REGISTER_URL = '/register'
   
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -28,16 +30,28 @@ const RegisterPage = () => {
       setShowPassword(!showPassword)
   }
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const newErrors = validateForm(formData)
     setError(newErrors)
     const isValid = Object.keys(newErrors).length === 0;
+    
     if (isValid) {
-      alert('Registration Successful')
-      console.log(formData.password)
-      setFormData({})
-      setError({})
+      setFormData({first_name: '',last_name: '',username: '',email: '',password: '',})
+      console.log(formData.last_name)
+      
+      try {
+        const response = await axios.post(REGISTER_URL, 
+          JSON.stringify(formData),
+          {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+          }
+        )
+        alert(response.data)
+      } catch (err) {
+        alert(err)
+      }
     }
   }
   
@@ -99,7 +113,7 @@ const RegisterPage = () => {
           </div>
           {error.email && <span className="error-message">{error.email}</span>}
           <div className="input-con">
-            <input type={showPassword ? 'text' : 'password'} 
+            <input type={showPassword ? "text" : "password"} 
                    name="password"
                    id="password"
                    className="auth-field-pass"

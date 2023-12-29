@@ -5,10 +5,10 @@ const validateForm = (formData) => {
   
   formData.last_name === '' ? (newErrors.last_name = 'Your Last Name is required') : '';
 
-  formData.email.trim() === '' ? (newErrors.email = 'Email is required') : '';
+  formData.email === '' ? (newErrors.email = 'Email is required') : '';
 
 
-  formData.email.trim().includes('@gmail.com') || formData.email.trim().includes('@yahoo.com') ? '' : (newErrors.email = 'Email is invalid');
+  formData.email.includes('@gmail.com') || formData.email.includes('@yahoo.com') ? '' : (newErrors.email = 'Email is invalid');
   
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
   if (!passwordRegex.test(formData.password)) {
