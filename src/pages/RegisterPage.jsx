@@ -19,7 +19,7 @@ const RegisterPage = () => {
   
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState({})
-  const REGISTER_URL = '/register'
+  const REGISTER_URL = '/register/'
   
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -37,9 +37,6 @@ const RegisterPage = () => {
     const isValid = Object.keys(newErrors).length === 0;
     
     if (isValid) {
-      setFormData({first_name: '',last_name: '',username: '',email: '',password: '',})
-      console.log(formData.last_name)
-      
       try {
         const response = await axios.post(REGISTER_URL, 
           JSON.stringify(formData),
@@ -48,7 +45,10 @@ const RegisterPage = () => {
             withCredentials: true
           }
         )
+        
         alert(response.data)
+        setFormData({first_name: '',last_name: '',username: '',email: '',password: '',})
+      
       } catch (err) {
         alert(err)
       }
