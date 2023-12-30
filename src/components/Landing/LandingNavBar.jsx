@@ -4,7 +4,7 @@ const LandingNavBar = () => {
   return (
     <nav className="navbar">
       <div className="logo-items">
-        <h2 className="text-2xl">Taskify</h2>
+        <h2 className="text-2xl"><Link to="/">Taskify</Link></h2>
       </div>
       
       <div className="navbar-content">

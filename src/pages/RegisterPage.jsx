@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import RegisterImage from '../assets/register.png'
 import axios from '../api/axios'
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 
 
 const RegisterPage = () => {
@@ -19,6 +22,7 @@ const RegisterPage = () => {
   
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState({})
+  const [errorMsg, setErrorMsg] = useState('')
   const REGISTER_URL = '/register/'
   
   const handleInputChange = (e) => {
@@ -46,11 +50,30 @@ const RegisterPage = () => {
           }
         )
         
-        alert(response.data)
+        console.log(response?.data)
+        toast.success("Registration Successful ! Please Login", {
+          position: toast.POSITION.TOP_RIGHT,
+        })
         setFormData({first_name: '',last_name: '',username: '',email: '',password: '',})
       
       } catch (err) {
-        alert(err)
+        if (!err?.response) {
+          setErrorMsg('No Server Response')
+          toast.error(errorMsg, {
+            position: toast.POSITION.TOP_RIGHT,
+         })
+        } else if (err.response.status === 400) {
+          setErrorMsg('Username Taken')
+          toast.error(errorMsg, {
+              position: toast.POSITION.TOP_RIGHT,
+           })          
+           console.log(errorMsg)
+        } else {
+          setErrorMsg('Registration Failed')
+          toast.error(errorMsg, {
+            position: toast.POSITION.TOP_RIGHT,
+         })
+        }
       }
     }
   }
@@ -58,7 +81,7 @@ const RegisterPage = () => {
   
   return (
     <div className="flex flex-col justify-center items-center w-full h-screen">
-    
+      <ToastContainer />
       <img src={RegisterImage} alt="Register image" className="w-full h-52 md:h-64 object-contain" />
     
       <h1 className="text-3xl text-gray-800 font-bold text-gradient"> Get Started</h1>
