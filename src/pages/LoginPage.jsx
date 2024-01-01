@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import axios from '../api/axios'
@@ -9,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 
 const LoginPage = () => {
+  const { setAuth } = useAuth()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -43,6 +45,7 @@ const LoginPage = () => {
         toast.success("Login Successful !", {
           position: toast.POSITION.TOP_RIGHT,
         })
+        setAuth(response?.data)
         setUsername('')
         setPassword('')
       
@@ -58,8 +61,7 @@ const LoginPage = () => {
           console.log(errorMsg)
           toast.error(errorMsg, {
               position: toast.POSITION.TOP_RIGHT,
-           })          
-        } else {
+           })                  } else {
           setErrorMsg('Login Failed')
           console.log(errorMsg)
           toast.error(errorMsg, {
