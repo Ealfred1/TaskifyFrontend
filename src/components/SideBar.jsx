@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faSun } from '@fortawesome/free-solid-svg-icons'
 import useAuth from '../hooks/useAuth'
-
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 const SideBar = ({ sideBarClose }) => {
   
@@ -11,6 +12,9 @@ const SideBar = ({ sideBarClose }) => {
   const logout = () => {
     setAuth({})
     localStorage.removeItem('authTokens')
+    toast.info("You've been logged out", {
+      position: toast.POSITION.TOP_RIGHT
+    })
   }
   
   return (
@@ -63,10 +67,6 @@ const SideBar = ({ sideBarClose }) => {
         </ul>
         
         <div className="bottom_content">
-       {/*   <div class="bottom expand_sidebar">
-            <span> Expand</span>
-            <i class='bx bx-log-in' ></i>
-          </div> */}
           <div className="bottom collapse_sidebar text-center">
           <button onClick={logout}>
             <span>Logout </span>
