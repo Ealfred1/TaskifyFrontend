@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
@@ -10,11 +10,16 @@ import "react-toastify/dist/ReactToastify.css"
 
 
 const LoginPage = () => {
-  const { setAuth } = useAuth()
+  const { auth, setAuth } = useAuth()
+  
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+  
+  const [loading, setLoading] = useState(false)
+  
+  const navigate = useNavigate()
   
   const LOGIN_URL = '/login/'
   
@@ -32,6 +37,7 @@ const LoginPage = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
       try {
         const response = await axios.post(LOGIN_URL, 
           JSON.stringify({ username, password }),
@@ -41,27 +47,36 @@ const LoginPage = () => {
           }
         )
         
-        console.log(response?.data)
+        setLoading(false)
         toast.success("Login Successful !", {
           position: toast.POSITION.TOP_RIGHT,
         })
         setAuth(response?.data)
+        localStorage.setItem('authTokens', JSON.stringify(response?.data))
         setUsername('')
         setPassword('')
-      
+        
+        setTimeout(() => {
+          navigate('/dashboard')
+        }, 1000);
       } catch (err) {
         if (!err?.response) {
+          setLoading(false)
           setErrorMsg('No Server Response')
           console.log(errorMsg)
           toast.error(errorMsg, {
             position: toast.POSITION.TOP_RIGHT,
          })
         } else if (err.response.status === 400) {
+          setLoading(false)
           setErrorMsg(err.response.data.error)
           console.log(errorMsg)
           toast.error(errorMsg, {
               position: toast.POSITION.TOP_RIGHT,
-           })                  } else {
+           })                  
+          
+        } else {
+          setLoading(false)
           setErrorMsg('Login Failed')
           console.log(errorMsg)
           toast.error(errorMsg, {
@@ -74,7 +89,6 @@ const LoginPage = () => {
   
   return (
     <div className="flex flex-col justify-center items-center w-full relative h-screen bg-white">
-          <ToastContainer />
     <img src={LoginImage} alt="Login image" className="w-full h-52 object-contain" />
     
       <h1 className="text-gradient text-3xl text-gray-800 mt-9 font-bold">Sign In</h1>
@@ -93,10 +107,9 @@ const LoginPage = () => {
             }
           </div>
           <div className="px-2 text-center">
-            <button type="submit" className="btn-auth"> Sign In</button>
+            <button type="submit" className="btn-auth">{ loading ? 'Signing In...' : 'Sign In' }</button>
             <h3 className="mt-2"> Don't have an account? <Link to="/register" className="text-purpleP font-bold"> Sign Up </Link></h3>
           </div>
-          
          </form>
      </div>
   )

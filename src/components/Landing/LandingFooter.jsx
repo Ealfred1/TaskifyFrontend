@@ -15,7 +15,7 @@ const LandingFooter = () => {
         <div className=" sm:w-52 h-full w-full space-y-2 text-center flex flex-col
         text-lg">
           <h3 className="text-3xl">Quick Links</h3>
-          <Link className="hover:opacity-90" to="/"> Home</Link>
+          <Link className="hover:opacity-90" to="/dashboard"> Home</Link>
           <Link className="hover:opacity-90" to="/login"> Sign In</Link>
           <Link className="hover:opacity-90" to="/register">Sign Up</Link>
         </div>

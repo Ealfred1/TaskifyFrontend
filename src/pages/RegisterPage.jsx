@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import validateForm from '../utils/validateForm1'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
@@ -25,6 +25,10 @@ const RegisterPage = () => {
   const [errorMsg, setErrorMsg] = useState('')
   const REGISTER_URL = '/register/'
   
+  const [loading, setLoading] = useState(false)
+  
+  const navigate = useNavigate()
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
@@ -36,6 +40,7 @@ const RegisterPage = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     const newErrors = validateForm(formData)
     setError(newErrors)
     const isValid = Object.keys(newErrors).length === 0;
@@ -50,25 +55,32 @@ const RegisterPage = () => {
           }
         )
         
+        setLoading(false)
         console.log(response?.data)
         toast.success("Registration Successful ! Please Login", {
           position: toast.POSITION.TOP_RIGHT,
         })
         setFormData({first_name: '',last_name: '',username: '',email: '',password: '',})
       
+      setTimeout(() => {
+          navigate('/login')
+        }, 1000);
       } catch (err) {
         if (!err?.response) {
+          setLoading(false)
           setErrorMsg('No Server Response')
           toast.error(errorMsg, {
             position: toast.POSITION.TOP_RIGHT,
          })
         } else if (err.response.status === 400) {
+          setLoading(false)
           setErrorMsg('Username Taken')
           toast.error(errorMsg, {
               position: toast.POSITION.TOP_RIGHT,
            })          
            console.log(errorMsg)
         } else {
+          setLoading(false)
           setErrorMsg('Registration Failed')
           toast.error(errorMsg, {
             position: toast.POSITION.TOP_RIGHT,
@@ -152,7 +164,7 @@ const RegisterPage = () => {
           {error.password && <span className="error-message">{error.password}</span>}
           
           <div className="px-2 text-center">
-            <button type="submit" className="btn-auth"> Sign Up</button>
+            <button type="submit" className="btn-auth">{ loading ? 'Signing Up...' : 'Sign Up' } </button>
             <h3 className="mt-2"> Already have an account? <Link to='/login' className="text-purpleP font-bold"> Sign In </Link></h3>
           </div>
           

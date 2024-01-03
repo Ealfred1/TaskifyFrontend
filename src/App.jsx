@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import Dashboard from './pages/DashboardPage'
+import RequireAuth from './components/RequireAuth'
 
 
 function App() {
@@ -19,8 +20,10 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
         </Route>
         
-        <Route element={<Layout />}>
-          <Route path='/dashboard' element={<Dashboard />} />
+        <Route element={<RequireAuth />}>
+          <Route element={<Layout />}>
+            <Route path='/dashboard' element={<Dashboard />} />
+          </Route>
         </Route>
       </Routes>
     </div>
