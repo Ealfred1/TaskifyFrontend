@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
 import axios from '../api/axios'
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 const AuthContext = createContext({})
 
@@ -11,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     console.log('token;updated')
     try {
         const response = await axios.post('/login/refresh/', 
-          JSON.stringify({ 'refresh': auth.refresh }),
+          JSON.stringify({ 'refresh': auth?.refresh }),
           {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
@@ -29,7 +31,7 @@ export const AuthProvider = ({ children }) => {
           access: response.data.access,
           refresh: response.data.refresh
         }
-        console.log('tokennnsnn', updatedTokens)
+        console.log('token', updatedTokens)
         
         localStorage.setItem('authTokens', JSON.stringify(updatedTokens))
         
@@ -40,11 +42,22 @@ export const AuthProvider = ({ children }) => {
           console.log(err.response.data.error)
         } else {
           console.log('Request Failed')
+          logout()
         }
       }
+      loading && setLoading(false)
+  }
+  
+  const logout = () => {
+    setAuth({})
+    localStorage.removeItem('authTokens')
+    toast.info("You've been logged out", {
+      position: toast.POSITION.TOP_RIGHT
+    })
   }
   
   useEffect(() => {
+    { loading && updateToken() }
     const fourMinutes = 1000 * 60 * 4;
     
     const interval = setInterval(() => {
@@ -54,7 +67,7 @@ export const AuthProvider = ({ children }) => {
   }, [auth, loading])
   
   return (
-      <AuthContext.Provider value={{ auth, setAuth}}>
+      <AuthContext.Provider value={{ auth, setAuth, logout }}>
         {children}
       </AuthContext.Provider>
     )

@@ -7,15 +7,8 @@ import "react-toastify/dist/ReactToastify.css"
 
 const SideBar = ({ sideBarClose }) => {
   
-  const { setAuth } = useAuth()
+  const { setAuth, logout } = useAuth()
   
-  const logout = () => {
-    setAuth({})
-    localStorage.removeItem('authTokens')
-    toast.info("You've been logged out", {
-      position: toast.POSITION.TOP_RIGHT
-    })
-  }
   
   return (
     <nav className={sideBarClose ? 'sidebar ' : 'sidebar close'}>
