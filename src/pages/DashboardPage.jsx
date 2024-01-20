@@ -1,22 +1,14 @@
 import { useEffect } from 'react'
 import useAuth from '../hooks/useAuth'
+import useDashboard from '../hooks/useDashboard'
 import axiosPrivate from '../api/axiosPrivate'
 
 const Dashboard = () => {
   const { auth } = useAuth()
-  
-  const fetchdata = async () => {
-    try {
-      const response = await axiosPrivate.get('/dashboard/')
-      console.log(response.data)
-      
-    } catch (err) {
-      console.log('error', err)
-    }
-  }
+  const data = useAuth()
   
   useEffect(() => {
-    fetchdata()
+    console.log(data)
   }, [])
   
   return (
