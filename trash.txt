@@ -1,0 +1,2 @@
+      <h1 className="text-2xl text-blue"> {greeting}, {auth.user.username} </h1>
+      <h1 className="text-2xl text-blue">You have {dashboardData.pending_tasks} pending tasks </h1>
