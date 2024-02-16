@@ -12,6 +12,20 @@
    @apply bg-white;
  }
  
+ .bg {
+  background-image: url('./assets/bg1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 1000;
+ }
+ 
+ .bg2 {
+  background-image: url('./assets/bg2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 1000;
+ }
+ 
 .circle {
   width: 150px;
   height: 150px;
@@ -102,7 +116,7 @@
   height: 100%;
   padding: 80px 4px;
   z-index: 100;
-  overflow-y: scroll;
+  overflow-y: hidden;
   box-shadow: 0 0 1px #777;
   transition: all 0.5s ease;
 }
@@ -110,9 +124,25 @@
   padding: 60px 0;
   width: 80px;
 }
-.sidebar::-webkit-scrollbar {
-  display: none;
+.sidebar:hover {
+  overflow-y: auto;
 }
+
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 10px;
+  }
+
+
+/* Hide scrollbar arrows for WebKit browsers */
+.sidebar::-webkit-scrollbar-thumb:hover {
+    @apply bg-purpleP;
+  }
 .menu_content {
   position: relative;
 }
@@ -129,11 +159,11 @@
   white-space: nowrap;
 }
 .menu_dashboard::before {
-  content: "Task Control Panel";
+  content: "General";
 }
 
 .menu_setting::before {
-  content: "Setting";
+  content: "";
 }
 .sidebar.close .menu_title::before {
   content: "";
@@ -170,7 +200,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 4px 15px;
+  padding: 13px 15px;
   border-radius: 8px;
   text-decoration: none;
   color: #777;

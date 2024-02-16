@@ -1,5 +1,4 @@
 import { Outlet, Link } from 'react-router-dom'
-
 import LandingNavBar from './LandingNavBar.jsx'
 import LandingFooter from './LandingFooter.jsx'
 

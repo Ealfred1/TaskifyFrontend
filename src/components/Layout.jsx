@@ -14,9 +14,9 @@ const Layout = () => {
   return (
     <>
       <div>
-        <Navbar handleSideBarToggle={handleSideBarToggle} />
+        <Navbar handleSideBarToggle={handleSideBarToggle} closed={sideBarClose} />
         <SideBar sideBarClose={sideBarClose} />
-        <div className="max-w-4xl mx-auto mt-24 ml-[90px]">
+        <div className="max-w-7xl h-screen mt-24 ml-[90px]">
           <Outlet />
         </div>
       </div>
