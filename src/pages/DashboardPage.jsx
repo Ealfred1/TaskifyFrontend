@@ -45,12 +45,12 @@ const Dashboard = () => {
           <div className="bg-[rgba(255,255,255,0.12)] w-full h-full p-4 pt-6 space-y-7
           rounded-xl text-left">
             <h1 className="text-xl sm:text-2xl text-gray-800 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
-            <h1 className="text-lg sm:text-xl text-gray-600">You have {dashboardData.pending_tasks} pending tasks </h1>
+            <h1 className="text-lg sm:text-xl text-gray-700">You have {dashboardData.pending_tasks} pending tasks </h1>
           </div>
         </div>
 
-         <div className={`sm:w-[40%] w-full h-80 sm:h-96 rounded-xl`}>
-          <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline showWeek />
+         <div className={`sm:w-[40%] w-full h-80 sm:h-96 rounded-xl border border-gray-400 mr-2 md:mr-4 lg:border-none`}>
+          <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline />
         </div>
       </div>
     </div>
