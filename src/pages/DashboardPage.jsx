@@ -42,14 +42,14 @@ const Dashboard = () => {
       <div className="flex flex-col lg:flex-row items-center justify-between sm:space-x-5 space-y-5">
         <div className={`w-full sm:w-[60%] z-10 ${ greeting === 'Good Morning' && 'Good Afternoon' ? 'bg' :
         'bg2' } h-80 sm:h-96 rounded-xl`}>
-          <div className="bg-[rgba(255,255,255,0.12)] w-full h-full p-8 space-y-7
-          rounded-xl text-center sm:text-left">
-            <h1 className="text-2xl text-gray-800 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
-            <h1 className="text-xl text-gray-600i>">You have {dashboardData.pending_tasks} pending tasks </h1>
+          <div className="bg-[rgba(255,255,255,0.12)] w-full h-full p-4 pt-6 space-y-7
+          rounded-xl text-left">
+            <h1 className="text-xl sm:text-2xl text-gray-800 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
+            <h1 className="text-lg sm:text-xl text-gray-600">You have {dashboardData.pending_tasks} pending tasks </h1>
           </div>
         </div>
 
-         <div className={`sm:w-[40%] w-[100%] h-80 sm:h-96 rounded-xl`}>
+         <div className={`sm:w-[40%] w-full border border-black mr-1 h-80 sm:h-96 rounded-xl`}>
           <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline showWeek />
         </div>
       </div>
