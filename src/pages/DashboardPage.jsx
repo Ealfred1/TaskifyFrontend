@@ -49,7 +49,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-         <div className={`sm:w-[40%] w-full border border-black mr-1 h-80 sm:h-96 rounded-xl`}>
+         <div className={`sm:w-[40%] w-full h-80 sm:h-96 rounded-xl`}>
           <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline showWeek />
         </div>
       </div>
