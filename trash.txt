@@ -1,2 +1,10 @@
       <h1 className="text-2xl text-blue"> {greeting}, {auth.user.username} </h1>
       <h1 className="text-2xl text-blue">You have {dashboardData.pending_tasks} pending tasks </h1>
+
+
+
+      <div className="bg-[rgba(255,255,255,0.12)] w-full h-full p-8 space-y-7 rounded-xl text-center sm:text-left">
+            <h1 className="text-2xl text-gray-800 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
+            <h1 className="text-xl text-gray-600">You have {dashboardData.pending_tasks} pending tasks </h1>
+
+          </div>

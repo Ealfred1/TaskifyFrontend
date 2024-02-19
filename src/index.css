@@ -6,6 +6,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.cal {
+  font-size: 2%;
+}
+
 
 @layer components {
  body {

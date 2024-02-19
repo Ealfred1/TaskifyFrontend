@@ -9,6 +9,12 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
+import 'primeicons/primeicons.css';
+import { PrimeReactProvider } from 'primereact/api';
+import 'primeflex/primeflex.css';  
+import 'primereact/resources/primereact.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <Router>
@@ -16,7 +22,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ScrollToTop />
       <ToastContainer />
       <DashboardProvider>
+      <PrimeReactProvider>
         <App />
+      </PrimeReactProvider>
       </DashboardProvider>
       </AuthProvider>
       </Router>
