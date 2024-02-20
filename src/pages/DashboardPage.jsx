@@ -54,8 +54,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-         <div className={`lg:w-[40%] h-80 sm:h-96 rounded-2xl border border-gray-400 mr-2 md:mr-4 lg:border-none shadow-lg shadow-gray-300`}>
-          <Calendar className="w-full sm:w-auto" value={date} onChange={(e) => setDate(e.value)} inline />
+         <div className={`lg:w-[40%] w-[100%] h-80 sm:h-96 rounded-2xl border border-gray-400 mr-2 md:mr-4 lg:border-none shadow-lg shadow-gray-300`}>
+          <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline />
         </div>
       </div>
     </div>
