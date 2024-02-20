@@ -126,7 +126,7 @@
 }
 .sidebar.close {
   padding: 60px 0;
-  width: 80px;
+  @apply w-0 sm:w-[80px];
 }
 .sidebar:hover {
   overflow-y: auto;
