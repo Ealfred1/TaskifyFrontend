@@ -41,7 +41,7 @@ const Dashboard = () => {
 
     <div className="px-1 w-full overflow-hidden pr-4">
       <div className="flex flex-col lg:flex-row w-[100%] items-center justify-between sm:space-x-2 space-y-5">
-        <div className={`w-full lg:w-[60%] z-10 ${ greeting === 'Good Morning' && 'Good Afternoon' ? 'bg' :
+        <div className={`w-full lg:w-[40%] z-10 ${ greeting === 'Good Morning' && 'Good Afternoon' ? 'bg' :
         'bg2' } h-80 sm:h-96 rounded-xl`}>
           <div className="bg-[rgba(255,255,255,0.2)] w-full h-full p-4 pt-6 space-y-7
           rounded-xl text-left">
@@ -54,7 +54,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-         <div className={`lg:w-[40%] w-[100%] h-80 sm:h-96 rounded-2xl mr-2 md:mr-4 lg:mr-0 lg:border-none shadow-2xl shadow-gray-400`}>
+         <div className={`lg:w-[60%] w-[100%] h-80 sm:h-96 rounded-2xl mr-2 md:mr-4 lg:mr-0 lg:border-none shadow-2xl shadow-gray-400`}>
           <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline />
         </div>
       </div>
