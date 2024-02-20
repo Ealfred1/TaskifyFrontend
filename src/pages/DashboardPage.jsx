@@ -48,13 +48,13 @@ const Dashboard = () => {
             <h1 className="text-xl sm:text-2xl text-gray-800 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
             <h1 className="text-lg sm:text-xl text-gray-900">You have {dashboardData.pending_tasks} pending tasks </h1>
 
-            <div className="">
+            <div className="float-right mt-7">
               <UpcomingTasks data={dashboardData} />
             </div>
           </div>
         </div>
 
-         <div className={`lg:w-[40%] w-[100%] h-80 sm:h-96 rounded-2xl border border-gray-400 mr-2 md:mr-4 lg:border-none shadow-lg shadow-gray-300`}>
+         <div className={`lg:w-[40%] w-[100%] h-80 sm:h-96 rounded-2xl mr-2 md:mr-4 lg:mr-0 lg:border-none shadow-2xl shadow-gray-400`}>
           <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline />
         </div>
       </div>
