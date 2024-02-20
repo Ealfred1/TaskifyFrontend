@@ -8,3 +8,42 @@
             <h1 className="text-xl text-gray-600">You have {dashboardData.pending_tasks} pending tasks </h1>
 
           </div>
+
+
+          import React from 'react';
+
+const UpcomingTasks = ({ data }) => {
+  const getUpcomingTasks = () => {
+    const today = new Date();
+
+    return (
+      <div>
+        <h2>Upcoming Tasks</h2>
+        {data.recent_tasks && data.recent_tasks.length > 0 ? (
+          data.recent_tasks
+            .filter((task) => new Date(task.due_date) >= today)
+            .map((task) => (
+              <div key={task.id} className="task-item">
+                <h3>{task.title}</h3>
+                <p>
+                  <strong>Category:</strong> {task.category}
+                </p>
+                <p>
+                  <strong>Due Date:</strong> {task.due_date}
+                </p>
+                <p>
+                  <strong>Status:</strong> {task.status}
+                </p>
+              </div>
+            ))
+        ) : (
+          <p>No upcoming tasks</p>
+        )}
+      </div>
+    );
+  };
+
+  return getUpcomingTasks();
+};
+
+export default UpcomingTasks;
