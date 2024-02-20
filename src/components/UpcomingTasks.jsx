@@ -5,7 +5,7 @@ const UpcomingTasks = ({ data }) => {
 
 		return (
 			<div>
-				{data?.recent_tasks && data?.recent_tasks > 0 ? (
+				{data?.recent_tasks && data?.recent_tasks.length > 0 ? (
 					data.recent_tasks.filter((task) => new Date(task.due_date) >= today)
 					.map((task) => (
 						<div key={task.id}>
