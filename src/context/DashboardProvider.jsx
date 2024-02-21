@@ -4,7 +4,7 @@ import axiosPrivate from '../api/axiosPrivate'
 const DashboardContext = createContext({})
 
 export const DashboardProvider = ({ children }) => {
-  const [dashboardData, setDashboardData] = useState(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : {})
+   const [dashboardData, setDashboardData] = useState(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : {})
   
   const fetchdata = async () => {
     try {
@@ -13,7 +13,7 @@ export const DashboardProvider = ({ children }) => {
       setDashboardData(response.data)
       localStorage.setItem('data', JSON.stringify(response.data))
     } catch (err) {
-      console.log('error', err)
+      console.log('dashboardError', err)
     }
   }
   
@@ -23,7 +23,7 @@ export const DashboardProvider = ({ children }) => {
   
   return (
         <DashboardContext.Provider value={{ dashboardData }}>
-          {children}
+          { children }
         </DashboardContext.Provider>
       )
 }
