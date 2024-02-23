@@ -6,6 +6,8 @@ import Homepage from './pages/Homepage'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import Dashboard from './pages/DashboardPage'
+import TaskPage from './pages/TaskPage'
+import CategoryPage from './pages/CategoryPage'
 import RequireAuth from './components/RequireAuth'
 
 
@@ -23,6 +25,8 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route element={<Layout />}>
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/task' element={<TaskPage />} />
+            <Route path='/category' element={<CategoryPage />} />
           </Route>
         </Route>
       </Routes>
