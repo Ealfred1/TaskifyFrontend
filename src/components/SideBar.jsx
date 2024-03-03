@@ -8,7 +8,8 @@ import "react-toastify/dist/ReactToastify.css"
 const SideBar = ({ sideBarClose }) => {
   
   const { setAuth, logout } = useAuth()
-  
+
+
   
   return (
     <nav className={sideBarClose ? 'sidebar ' : 'sidebar close'}>
@@ -16,7 +17,7 @@ const SideBar = ({ sideBarClose }) => {
         <ul className="menu_items space-y-6">
           <div className="menu_title menu_dashboard font-semibold"></div> 
           <li className="item">
-            <Link to="/dashboard" className="nav_link">
+            <Link to="/dashboard" className="nav_link" title='Dashboard'>
               <span className="navlink_icon">
                 <i className="bx bx-home-alt"></i>
               </span>
@@ -24,7 +25,7 @@ const SideBar = ({ sideBarClose }) => {
             </Link>
           </li>
           <li className="item">
-            <Link to="/task" className="nav_link">
+            <Link to="/task" className="nav_link" title='Task Overview'>
               <span className="navlink_icon">
                 <i className="bx bx-task"></i>
               </span>
@@ -32,7 +33,7 @@ const SideBar = ({ sideBarClose }) => {
             </Link>
           </li>
           <li className="item">
-            <Link to="/category" className="nav_link">
+            <Link to="/category" className="nav_link" title='Categories'>
               <span className="navlink_icon">
                 <i className="bx bx-grid-alt"></i>
               </span>
@@ -41,7 +42,7 @@ const SideBar = ({ sideBarClose }) => {
           </li>
           
           <li className="item">
-            <Link to="/search" className="nav_link">
+            <Link to="/search" className="nav_link" title='Search'>
               <span className="navlink_icon">
                 <i className="bx bx-search"></i>
               </span>
@@ -50,7 +51,7 @@ const SideBar = ({ sideBarClose }) => {
           </li>
 
           <li className="item">
-            <Link to="/projects" className="nav_link">
+            <Link to="/projects" className="nav_link" title='Projects'>
               <span className="navlink_icon">
                 <i className="bx bxl-codepen"></i>
               </span>
@@ -60,17 +61,17 @@ const SideBar = ({ sideBarClose }) => {
 
 
           <li className="item">
-            <Link to="/calender" className="nav_link">
+            <Link to="/calendar" className="nav_link" title='Calendar'>
               <span className="navlink_icon">
                 <i className="bx bx-calendar"></i>
               </span>
-              <span className="navlink">Calender</span>
+              <span className="navlink">Calendar</span>
             </Link>
           </li>
 
           
           <li className="item">
-            <Link to="/tasks/filter" className="nav_link">
+            <Link to="/tasks/filter" className="nav_link" title='Filter Task'>
               <span className="navlink_icon">
                 <i className="bx bx-filter"></i>
               </span>
@@ -79,7 +80,7 @@ const SideBar = ({ sideBarClose }) => {
           </li>
 
           <li className="item">
-            <Link to="/settings" className="nav_link">
+            <Link to="/settings" className="nav_link" title='Settings'>
               <span className="navlink_icon">
                 <i className="bx bx-cog"></i>
               </span>
@@ -90,7 +91,7 @@ const SideBar = ({ sideBarClose }) => {
 
         <div className="bottom_content">
           <div className="bottom collapse_sidebar text-center">
-          <button onClick={logout}>
+          <button onClick={logout} title='Logout'>
             <span>Logout </span>
             <i className='bx bx-log-out'></i>
           </button>

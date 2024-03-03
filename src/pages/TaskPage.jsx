@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import React from 'react'
 
 const TaskPage = () => {
 	return (
 		<div>
-			Task Lists!!!
+			Task Page!!!
 		</div>
 	)
 }

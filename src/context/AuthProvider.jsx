@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
         console.log('updatedTokens', updatedTokens)
         
         localStorage.setItem('authTokens', JSON.stringify(updatedTokens))
-        console.log(localStorage.getItem('authTokens'))
+        // console.log(localStorage.getItem('authTokens'))
         
       } catch (err) {
         if (!err?.response) {
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }) => {
   
   useEffect(() => {
     { loading && updateToken() }
-    console.log(localStorage.getItem('authTokens'))
+    // console.log(localStorage.getItem('authTokens'))
     const fourMinutes = 1000 * 60 * 4;
     
     const interval = setInterval(() => {

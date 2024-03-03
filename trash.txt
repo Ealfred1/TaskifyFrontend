@@ -134,3 +134,10 @@ export const AuthProvider = ({ children }) => {
 };
 
 export default AuthContext;
+
+
+&& data.recent_tasks.filter((task) => new Date(task.due_date) >= today) > 0
+
+
+
+

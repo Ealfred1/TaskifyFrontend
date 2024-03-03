@@ -109,6 +109,17 @@
   .navbar-content .i {
     @apply cursor-pointer text-base text-gray-500;
   }
+
+  .category-box {
+    @apply w-[45.5%] md:w-[20rem] h-48 md:h-52 rounded-xl bg-white shadow-lg shadow-gray-200 border border-gray-400;
+  }
+
+  .upcoming {
+    @apply my-2 bg-[rgba(255,255,255,0.7)] py-2 rounded-lg pl-8;
+    background-image: linear-gradient(to right, #8083ff, #4D70EF);
+    background-size: 7px 60px;
+    background-repeat: no-repeat;
+  }
   
   /* sidebar */
 .sidebar {
@@ -118,7 +129,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  padding: 80px 4px;
+  padding: 40px 4px 80px 4px;
   z-index: 100;
   overflow-y: hidden;
   box-shadow: 0 0 1px #777;
