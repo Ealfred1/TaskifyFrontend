@@ -1,142 +1,163 @@
-      <h1 className="text-2xl text-blue"> {greeting}, {auth.user.username} </h1>
-      <h1 className="text-2xl text-blue">You have {dashboardData.pending_tasks} pending tasks </h1>
+import { useState } from 'react';
+import axiosPrivate from '../api/axiosPrivate';
 
+const ProfileCreation = () => {
+  const [profileData, setProfileData] = useState({
+    // Fill in other fields as needed
+    bio: '',
+    // Add other fields as needed
+    profile_picture: null, // File input
+  });
 
-
-      <div className="bg-[rgba(255,255,255,0.12)] w-full h-full p-8 space-y-7 rounded-xl text-center sm:text-left">
-            <h1 className="text-2xl text-gray-800 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
-            <h1 className="text-xl text-gray-600">You have {dashboardData.pending_tasks} pending tasks </h1>
-
-          </div>
-
-
-          import React from 'react';
-
-const UpcomingTasks = ({ data }) => {
-  const getUpcomingTasks = () => {
-    const today = new Date();
-
-    return (
-      <div>
-        <h2>Upcoming Tasks</h2>
-        {data.recent_tasks && data.recent_tasks.length > 0 ? (
-          data.recent_tasks
-            .filter((task) => new Date(task.due_date) >= today)
-            .map((task) => (
-              <div key={task.id} className="task-item">
-                <h3>{task.title}</h3>
-                <p>
-                  <strong>Category:</strong> {task.category}
-                </p>
-                <p>
-                  <strong>Due Date:</strong> {task.due_date}
-                </p>
-                <p>
-                  <strong>Status:</strong> {task.status}
-                </p>
-              </div>
-            ))
-        ) : (
-          <p>No upcoming tasks</p>
-        )}
-      </div>
-    );
-  };
-
-  return getUpcomingTasks();
-};
-
-export default UpcomingTasks;
-
-
-
-
-
-import { createContext, useState, useEffect } from 'react';
-import axios from '../api/axios';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-const AuthContext = createContext({});
-
-export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : {});
-  const [loading, setLoading] = useState(true);
-  const [initialFetchComplete, setInitialFetchComplete] = useState(false);
-
-  const updateToken = async () => {
-    console.log('token updated');
-    setLoading(true);
-
-    try {
-      const response = await axios.post(
-        '/login/refresh/',
-        JSON.stringify({ refresh: auth?.refresh }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        }
-      );
-
-      setAuth((prevAuth) => ({
-        ...prevAuth,
-        access: response.data.access,
-        refresh: response.data.refresh,
-      }));
-
-      const updatedTokens = {
-        ...auth,
-        access: response.data.access,
-        refresh: response.data.refresh,
-      };
-      console.log('token', updatedTokens);
-
-      localStorage.setItem('authTokens', JSON.stringify(updatedTokens));
-    } catch (err) {
-      if (!err?.response) {
-        console.log('no server response');
-      } else if (err.response.status === 400) {
-        console.log(err.response.data.error);
-      } else {
-        console.log('Request Failed');
-        logout();
-      }
-    } finally {
-      setLoading(false);
-      setInitialFetchComplete(true); // Set initialFetchComplete to true after the first data fetch
-    }
-  };
-
-  const logout = () => {
-    setAuth({});
-    localStorage.removeItem('authTokens');
-    toast.info("You've been logged out", {
-      position: toast.POSITION.TOP_RIGHT,
+  const handleFileChange = (event) => {
+    setProfileData({
+      ...profileData,
+      profile_picture: event.target.files[0],
     });
   };
 
-  useEffect(() => {
-    updateToken();
-    const fourMinutes = 1000 * 60 * 4;
+  const handleProfileCreation = async () => {
+    try {
+      const formData = new FormData();
+      // Append other fields to formData
+      formData.append('bio', profileData.bio);
+      // Append other fields as needed
+      formData.append('profile_picture', profileData.profile_picture);
 
-    const interval = setInterval(() => {
-      auth && updateToken();
-    }, fourMinutes);
-    return () => clearInterval(interval);
-  }, [auth]);
+      const response = await axiosPrivate.post('/profile/create/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
-  // Render children only when initial data fetching is complete
-  return initialFetchComplete ? (
-    <AuthContext.Provider value={{ auth, setAuth, logout }}>
-      {children}
-    </AuthContext.Provider>
-  ) : null;
+      console.log('Profile Created:', response.data);
+      // Handle success, e.g., redirect or show a success message
+    } catch (error) {
+      console.error('Profile Creation Failed:', error);
+      // Handle error, e.g., show an error message
+    }
+  };
+
+  return (
+    <div>
+      {/* Add form fields for other profile data */}
+      <input
+        type="text"
+        placeholder="Bio"
+        value={profileData.bio}
+        onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
+      />
+      {/* Add other form fields as needed */}
+      <input type="file" onChange={handleFileChange} />
+      <button onClick={handleProfileCreation}>Create Profile</button>
+    </div>
+  );
 };
 
-export default AuthContext;
+export default ProfileCreation;
 
 
-&& data.recent_tasks.filter((task) => new Date(task.due_date) >= today) > 0
+To implement dark mode using Tailwind CSS in a React application, you can follow these steps:
+
+Install Tailwind CSS:
+If you haven't already, install Tailwind CSS in your project. You can use the following commands:
+
+bash
+Copy code
+# Install Tailwind CSS and its dependencies
+npm install tailwindcss postcss autoprefixer
+Then, initialize your project with the configuration files:
+
+bash
+Copy code
+npx tailwindcss init -p
+Configure Tailwind CSS for Dark Mode:
+In your tailwind.config.js, you can set up dark mode by adding the following configuration:
+
+javascript
+Copy code
+// tailwind.config.js
+
+module.exports = {
+  // ...
+  darkMode: 'class', // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {},
+  plugins: [],
+};
+This configuration enables dark mode based on the class you add to the <html> element.
+
+Create a Dark Mode Toggle Component:
+You can create a component that toggles the dark mode class on some global element (like the <html> or <body>). Here's a simple example:
+
+jsx
+Copy code
+// DarkModeToggle.js
+
+import { useState, useEffect } from 'react';
+
+const DarkModeToggle = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    if (darkMode) {
+      htmlElement.classList.add('dark');
+    } else {
+      htmlElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+  return (
+    <div>
+      <label>
+        Dark Mode
+        <input
+          type="checkbox"
+          checked={darkMode}
+          onChange={() => setDarkMode(!darkMode)}
+        />
+      </label>
+    </div>
+  );
+};
+
+export default DarkModeToggle;
+Use the DarkModeToggle Component:
+Import and use the DarkModeToggle component in your application:
+
+jsx
+Copy code
+// App.js
+
+import DarkModeToggle from './DarkModeToggle';
+
+const App = () => {
+  return (
+    <div>
+      <DarkModeToggle />
+      {/* Your other components */}
+    </div>
+  );
+};
+
+export default App;
+This component will add or remove the dark class from the <html> element, and Tailwind CSS will apply dark mode styles based on this class.
+
+Style Your Components for Dark Mode:
+You can use Tailwind CSS classes with the dark: prefix to apply styles specifically for dark mode. For example:
+
+jsx
+Copy code
+<div className="bg-white dark:bg-gray-800">
+  {/* Content */}
+</div>
+This will set the background color to white in light mode and gray-800 in dark mode.
+
+Remember to customize the styles and configurations according to your design preferences.
+
 
 
 
