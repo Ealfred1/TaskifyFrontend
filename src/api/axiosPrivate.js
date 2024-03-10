@@ -6,7 +6,7 @@ const ACTIVE_URL = 'https://taskify-fl.onrender.com/api'
 const axiosPrivate = axios.create({
   baseURL: ACTIVE_URL,
   headers: { 'Content-Type': 'application/json',
-              'Authorization': `Bearer ${JSON.parse(localStorage.getItem('authTokens')).access}`
+              'Authorization': `Bearer ${localStorage.getItem('authTokens') && JSON.parse(localStorage.getItem('authTokens')).access || null}`
    },
   withCredentials: true
 })

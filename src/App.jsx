@@ -8,12 +8,13 @@ import LoginPage from './pages/LoginPage'
 import Dashboard from './pages/DashboardPage'
 import TaskPage from './pages/TaskPage'
 import CategoryPage from './pages/CategoryPage'
+import CategoryDetailPage from './pages/CategoryDetailPage'
 import CalendarPage from './pages/CalendarPage'
 import SearchPage from './pages/SearchPage'
 import RequireAuth from './components/RequireAuth'
 
 
-function App() {
+const App = () => {
   
   return (
     <div className="w-full h-screen">
@@ -29,6 +30,7 @@ function App() {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/task' element={<TaskPage />} />
             <Route path='/category' element={<CategoryPage />} />
+            <Route path='/category/:id' element={<CategoryDetailPage />} />
             <Route path='/calendar' element={<CalendarPage />} />
             <Route path='/search' element={<SearchPage />} />
           </Route>

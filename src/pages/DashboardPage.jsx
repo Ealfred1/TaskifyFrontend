@@ -4,10 +4,11 @@ import useAuth from '../hooks/useAuth'
 import useDashboard from '../hooks/useDashboard'
 import axiosPrivate from '../api/axiosPrivate'
 import UpcomingTasks from '../components/UpcomingTasks'
+import CategoryList from '../components/CategoryList'
 
 const Dashboard = () => {
   const { auth } = useAuth()
-  const { dashboardData } = useDashboard()
+  const { dashboardData, loading } = useDashboard()
   const [greeting, setGreeting] = useState('')
   const [currentDate, setCurrentDate] = useState('')
   const [date, setDate] = useState(null)
@@ -39,7 +40,7 @@ const Dashboard = () => {
   return (
     <>
 
-    <div className="px-1 w-full overflow-hidden pr-4">
+    <div className="px-1 w-full pr-4">
       <div className="flex flex-col lg:flex-row w-[100%] items-center justify-between sm:space-x-2 space-y-5">
         <div className={`w-full lg:w-[40%] z-10 ${greeting === 'Good Morning' || greeting === 'Good Afternoon' ? 'bg' : 'bg2' } h-80 sm:h-96 rounded-xl`}>
           <div className="bg-[rgba(255,255,255,0.2)] w-full h-full p-4 pt-6 space-y-7
@@ -47,7 +48,7 @@ const Dashboard = () => {
             <h1 className="text-xl sm:text-2xl text-gray-800 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
             <h1 className="text-lg sm:text-xl text-gray-900">You have {dashboardData.pending_tasks} pending tasks </h1>
 
-            <div className="float-right mt-7  md:w-[60%] w-[50%]">
+            <div className="float-right mt-6 pb-7 w-[60%] h-[50%] md:h-[60%] data hover:overflow-y-auto">
               <UpcomingTasks data={dashboardData} />
             </div>
           </div>
@@ -57,6 +58,14 @@ const Dashboard = () => {
           <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline />
         </div>
       </div>
+
+      <div className='mt-12 md:mt-20 p-3'>
+        <h1 className='text-lg md:text-xl text-gray-500 my-4 font-bold'> Your Categories</h1>
+        <div className='category-con'>
+          <CategoryList categoryData={dashboardData.categories} loading={loading} />
+        </div>
+      </div>
+
     </div>
     </>
 

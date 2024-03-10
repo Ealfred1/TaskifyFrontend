@@ -1,11 +1,13 @@
 import { createContext, useEffect, useState } from 'react'
 import axiosPrivate from '../api/axiosPrivate'
+import useAuth from '../hooks/useAuth'
 
 const DashboardContext = createContext({})
 
 export const DashboardProvider = ({ children }) => {
    const [dashboardData, setDashboardData] = useState(localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : {})
    const [loading, setLoading]= useState(true)
+   const { auth } = useAuth()
   // const [dashboardData, setDashboardData] = useState({})
   
   const fetchdata = async () => {
@@ -28,8 +30,10 @@ export const DashboardProvider = ({ children }) => {
   }
   
   useEffect(() => {
-    fetchdata()
-  }, [loading])
+    if (auth.access) {
+      fetchdata()
+    }
+  }, [auth])
   
   return (
         <DashboardContext.Provider value={{ dashboardData }}>
