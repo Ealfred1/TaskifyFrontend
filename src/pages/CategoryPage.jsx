@@ -48,7 +48,7 @@ const CategoryPage = () => {
         		</div>
       		</div>
       		<div className='category-con'>
-            <CategoryList categoryData={categoryData} loading={loading} />
+            <CategoryList categoryData={categoryData} loading={loading} className="category-box" />
       		</div>
 		</div>
 	)
