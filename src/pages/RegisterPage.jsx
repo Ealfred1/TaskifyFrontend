@@ -98,7 +98,7 @@ const RegisterPage = () => {
     
       <h1 className="text-3xl text-gray-800 font-bold text-gradient"> Get Started</h1>
         <form className="mt-4 px-2 max-w-2xl w-full" method="post" onSubmit={handleSubmit}>
-          <div className="flex justify-around w-full ">
+          <div className="flex justify-around w-full -mb-4">
           
             <div className="input-con md:w-1/2">
               <input type="text" 

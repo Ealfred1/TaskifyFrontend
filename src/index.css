@@ -68,7 +68,7 @@
 .input-con input {
     transition: border-bottom-color 0.1s ease;
     caret-color: purpleP;
-    @apply w-full h-14 py-2 px-4 text-sm border border-gray-500 outline-none rounded-xl text-gray-500 bg-transparent;
+    @apply w-full h-14 py-2 px-4 text-sm border border-gray-500 outline-none rounded-xl text-gray-500 bg-transparent autofill:bg-transparent;
 }
 
 .pass-toggle{

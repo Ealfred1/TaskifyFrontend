@@ -1,4 +1,104 @@
 import { useState } from 'react';
+import CategoryList from '../components/CategoryList';
+import useFetch from '../hooks/useFetch';
+
+const CategoryPage = () => {
+  const { data: categoryData, loading, error, } = useFetch('/categories/');
+  const [newCategory, setNewCategory] = useState('');
+
+  const handleCategoryCreation = async () => {
+    try {
+      const response = await fetch('/categories/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: newCategory }), // Assuming the category has a 'name' field
+      });
+
+      if (response.ok) {
+        // Successful creation
+        alert('Category created successfully!');
+        // You may want to fetch the updated data after successful creation
+        // const updatedData = await response.json();
+        // Update state or re-fetch data as needed
+      } else {
+        // Handle error cases
+        alert('Failed to create category. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error creating category:', error);
+      alert('An unexpected error occurred. Please try again.');
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setNewCategory(e.target.value);
+  };
+
+  return (
+    <div className='mx-3'>
+      {/* ... (your existing JSX) ... */}
+      <input
+        type="text"
+        value={newCategory}
+        onChange={handleInputChange}
+        className='h-full w-full px-5 border border-gray-300 rounded-l-xl outline-none focus:border focus:border-blue-500'
+        placeholder="Create category..."
+      />
+      {/* ... (your existing JSX) ... */}
+    </div>
+  );
+};
+
+export default CategoryPage;
+In this example, the handleCategoryCreation function uses the Fetch API to send a POST request to the /categories/ endpoint with the new category data. If the request is successful, it alerts the user with a success message. If there's an error, it alerts the user with an error message. Adjust the code according to your API's requirements and response structure.
+
+
+
+User
+what of the button to trigger it?
+ChatGPT
+Apologies for the oversight. It looks like I missed including the onClick handler for the button. Here's the corrected code:
+
+javascript
+Copy code
+// ... (other imports and components)
+
+const CategoryPage = () => {
+  // ... (existing code)
+
+  return (
+    <div className='mx-3'>
+      {/* ... (your existing JSX) ... */}
+      <div className="w-[100%] md:w-[60%] h-14 flex text-base outline-none bg-white text-gray-500">
+        <div className='w-[80%]'>
+          <input
+            type="text"
+            value={newCategory}
+            onChange={handleInputChange}
+            className='h-full w-full px-5 border border-gray-300 rounded-l-xl outline-none focus:border focus:border-blue-500'
+            placeholder="Create category..."
+          />
+        </div>
+        <div className='w-[20%] flex items-center justify-center px-3 bg-gradient-to-r from-purpleP to-purple-400 text-gray-900 rounded-r-xl cursor-pointer hover:opacity-90'>
+          <button
+            className='font-medium text-sm text-center'
+            onClick={handleCategoryCreation}
+          >
+            Add
+          </button>
+        </div>
+      </div>
+      {/* ... (your existing JSX) ... */}
+    </div>
+  );
+};
+
+export default CategoryPage;
+
+
+import { useState } from 'react';
 import axiosPrivate from '../api/axiosPrivate';
 
 const ProfileCreation = () => {
