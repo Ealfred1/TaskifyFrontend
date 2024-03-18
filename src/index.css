@@ -30,12 +30,12 @@
   z-index: 1000;
  }
 
- .data {
+/* .data {
   overflow: hidden;
- }
+ }*/
 
  .data::-webkit-scrollbar {
-    width: 5px;
+    @apply w-[2px] w-[5px];
 }
 
 .data::-webkit-scrollbar-thumb {
@@ -190,6 +190,7 @@
   padding: 40px 4px 80px 4px;
   z-index: 100;
   overflow-y: hidden;
+  overflow-x: hidden;
   box-shadow: 0 0 1px #777;
   transition: all 0.5s ease;
 }
@@ -319,7 +320,7 @@
 }
 .sidebar.close .bottom_content {
   width: 0px;
-  left: 15px;
+  left: -15px;
 
 }
 .sidebar.close .bottom span {

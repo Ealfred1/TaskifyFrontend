@@ -48,7 +48,7 @@ const Dashboard = () => {
             <h1 className="text-xl sm:text-2xl text-gray-800 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
             <h1 className="text-lg sm:text-xl text-gray-900">You have {dashboardData.pending_tasks} pending tasks </h1>
 
-            <div className="float-right mt-6 pb-7 w-[60%] h-[50%] md:h-[60%] data hover:overflow-y-auto">
+            <div className="float-right mt-6 pb-7  w-[70%] h-[50%] md:h-[60%] data overflow-y-auto">
               <UpcomingTasks data={dashboardData} />
             </div>
           </div>

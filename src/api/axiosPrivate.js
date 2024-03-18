@@ -4,7 +4,7 @@ const LOCAL_URL = 'http://localhost:8000/api'
 const ACTIVE_URL = 'https://taskify-fl.onrender.com/api'
 
 const axiosPrivate = axios.create({
-  baseURL: ACTIVE_URL,
+  baseURL: LOCAL_URL,
   headers: { 'Content-Type': 'application/json',
               'Authorization': `Bearer ${localStorage.getItem('authTokens') && JSON.parse(localStorage.getItem('authTokens')).access || null}`
    },

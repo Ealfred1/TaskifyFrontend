@@ -89,7 +89,7 @@ const SideBar = ({ sideBarClose }) => {
           </li>
         </ul>
 
-        <div className="bottom_content">
+        <div className="bottom_content">  
           <div className="bottom collapse_sidebar text-center">
           <button onClick={logout} title='Logout'>
             <span>Logout </span>
