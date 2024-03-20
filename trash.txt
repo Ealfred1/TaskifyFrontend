@@ -1,3 +1,5 @@
+install primeicons on taskify
+
 import { useState } from 'react';
 import CategoryList from '../components/CategoryList';
 import useFetch from '../hooks/useFetch';
@@ -16,7 +18,7 @@ const CategoryPage = () => {
         body: JSON.stringify({ name: newCategory }), // Assuming the category has a 'name' field
       });
 
-      if (response.ok) {
+      if (response.ok) {n
         // Successful creation
         alert('Category created successfully!');
         // You may want to fetch the updated data after successful creation

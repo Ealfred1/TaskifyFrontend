@@ -4,6 +4,7 @@
 
 * {
   font-family: "Poppins", sans-serif;
+   transition: 0.8s all ease-in-out;
 }
 
 .cal {
@@ -13,7 +14,8 @@
 
 @layer components {
  body {
-   @apply bg-white;
+   @apply bg-white dark:bg-slate-900;
+
  }
  
  .bg {
@@ -159,7 +161,7 @@
   background: var(--white);
   border-radius: 20px;
   display: block;
-  box-shadow: 0 5px 7px rgba(100,100,100,0.23);
+  /*box-shadow: 0 5px 7px rgba(100,100,100,0.23);*/
   background-image: linear-gradient(to right, #8083ff, #4D70EF);
   background-size: 330px 200px;
   background-repeat: no-repeat;
@@ -231,6 +233,7 @@
 .menu_title::before {
   color: #777;
   white-space: nowrap;
+  @apply dark:text-gray-400;
 }
 .menu_dashboard::before {
   content: "General";
@@ -250,6 +253,10 @@
 .menu_items {
   padding: 0;
   list-style: none;
+}
+
+.navlink {
+  @apply dark:text-gray-400 dark:hover:text-white;
 }
 .navlink_icon {
   position: relative;
@@ -288,7 +295,7 @@
   background: #8083ff;
 }
 .sidebar.close .nav_link:hover {
-  background: white;
+  color: white;
 }
 
 .bottom_content {

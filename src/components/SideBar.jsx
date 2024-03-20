@@ -12,7 +12,7 @@ const SideBar = ({ sideBarClose }) => {
 
   
   return (
-    <nav className={sideBarClose ? 'sidebar ' : 'sidebar close'}>
+    <nav className={sideBarClose ? 'sidebar dark:bg-slate-900' : 'sidebar close dark:bg-slate-900'}>
       <div className="menu_content pt-10">
         <ul className="menu_items space-y-6">
           <div className="menu_title menu_dashboard font-semibold"></div> 
@@ -90,7 +90,7 @@ const SideBar = ({ sideBarClose }) => {
         </ul>
 
         <div className="bottom_content">  
-          <div className="bottom collapse_sidebar text-center">
+          <div className="bottom collapse_sidebar text-center dark:bg-slate-900">
           <button onClick={logout} title='Logout'>
             <span>Logout </span>
             <i className='bx bx-log-out'></i>
