@@ -13,7 +13,7 @@ const Navbar = ({ handleSideBarToggle, closed }) => {
       </div>
       
       <div className="search-bar">
-        <input type="text" className="dark:bg-transparent dark:border-gray-500" placeholder="Search..." />
+        <input type="text" className="dark:bg-transparent dark:border-gray-500 dark:text-white" placeholder="Search..." />
       </div>
       
       <div className="navbar-content">

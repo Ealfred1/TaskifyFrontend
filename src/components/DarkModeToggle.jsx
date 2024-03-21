@@ -20,7 +20,7 @@ const DarkModeToggle = () => {
 
 	return (
 		<>
-			<i className={darkMode ? 'bx bx-sun i' : 'bx bx-moon'} id="darkLight" onClick={handleDarkMode}></i>
+			<i className={darkMode ? 'bx bx-sun i' : 'bx bx-moon i'} id="darkLight" onClick={handleDarkMode}></i>
 		</>
 	)
 }
