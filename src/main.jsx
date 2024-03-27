@@ -12,8 +12,22 @@ import 'primeicons/primeicons.css';
 import { PrimeReactProvider } from 'primereact/api';
 import 'primeflex/primeflex.css';  
 import 'primereact/resources/primereact.css';
-import 'primereact/resources/themes/lara-dark-indigo/theme.css';
-import 'primereact/resources/themes/lara-light-indigo/theme.css'
+
+
+(() => {
+  setInterval(() => {
+     const mode = JSON.parse(localStorage.getItem('dark'))
+  if (mode === true) {
+    import ('primereact/resources/themes/lara-dark-indigo/theme.css');
+    //import 'primereact/resources/themes/lara-light-indigo/theme.css'
+  } else if (mode === false) {
+      import ('primereact/resources/themes/lara-light-indigo/theme.css')
+  }
+  }, 1)
+ 
+})()
+
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

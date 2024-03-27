@@ -7,6 +7,8 @@ import axios from '../api/axios'
 import LoginImage from '../assets/login.png'
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import 'primeicons/primeicons.css'
+
 
 
 const LoginPage = () => {

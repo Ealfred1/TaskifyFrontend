@@ -64,6 +64,10 @@ const CategoryPage = () => {
   	fetchdata()
   }, [loading])
 
+  useEffect(() => {
+    console.log('mounted');
+  }, [])
+
   return (
 		<div className='mx-3'>
 			<div className='text-left my-5'>
