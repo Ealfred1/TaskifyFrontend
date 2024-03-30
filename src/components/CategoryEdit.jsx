@@ -3,7 +3,7 @@ import axiosPrivate from '../api/axiosPrivate'
 import { ToastContainer, toast } from "react-toastify"
 import useTasks from '../hooks/useTasks'
 
-const CategoryPopup = ({ message, categoryId, toggle, handleToggle }) => {
+const CategoryEdit = ({ message, categoryId, toggle, handleToggle }) => {
 	const { getCategories } = useTasks()
 
 	const handleSubmit = async (e) => {
@@ -47,4 +47,4 @@ const CategoryPopup = ({ message, categoryId, toggle, handleToggle }) => {
 	)
 }
 
-export default CategoryPopup
+export default CategoryEdit

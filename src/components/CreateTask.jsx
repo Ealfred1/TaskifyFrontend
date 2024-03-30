@@ -15,10 +15,8 @@ const CreateTask = ({ toggle, handleToggle, categoryDetail }) => {
 	    status: '',
   	})
   	const [error, setError] = useState({})
-  	const { getTasks } = useTasks()
+  	const { getTasks, categoryData } = useTasks()
   	const { fetchdata } = useDashboard()
-
-  	const categoryData = JSON.parse(localStorage.getItem("data")).categories
 
 	const handleInputChange = (e) => {
     	const { name, value } = e.target
@@ -122,7 +120,7 @@ const CreateTask = ({ toggle, handleToggle, categoryDetail }) => {
 							{ categoryData.length > 0 && categoryData.map((category) => (
 								<span key={category.id} onClick={() => handleCategoryClick(category.name)} className={`category-button ${formData.category === category.name ? 'active' : ''}`}>{category.name}</span>
 							)) }
-							{ categoryData.length <= 0 && (<label className="task-label text-sm text-gray-400">No categories yet! Try creating some, if not we'll use a default category</label>) }
+							{ categoryData.length <= 0 && categoryData != {} && (<label className="task-label text-sm text-gray-400">No categories yet! Try creating some, if not we'll use a default category</label>) }
 						</div>
 						{ error.category && <span className="error-message">{error.category}</span> }
 					</div>

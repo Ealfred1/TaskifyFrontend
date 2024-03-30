@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Calendar } from 'primereact/calendar'
 import useAuth from '../hooks/useAuth'
 import useDashboard from '../hooks/useDashboard'
+import useTasks from '../hooks/useTasks'
 import axiosPrivate from '../api/axiosPrivate'
 import UpcomingTasks from '../components/UpcomingTasks'
 import CategoryList from '../components/CategoryList'
@@ -9,6 +10,7 @@ import CategoryList from '../components/CategoryList'
 const Dashboard = () => {
   const { auth } = useAuth()
   const { dashboardData, loading } = useDashboard()
+  const { categoryData } = useTasks()
   const [greeting, setGreeting] = useState('')
   const [currentDate, setCurrentDate] = useState('')
   const [date, setDate] = useState(null)
@@ -64,7 +66,7 @@ const Dashboard = () => {
       <div className='mt-12 md:mt-20 p-3'>
         <h1 className='text-lg md:text-xl text-gray-500 my-4 font-bold'> Your Categories</h1>
         <div className='category-list'>
-          <CategoryList categoryData={dashboardData.categories} loading={loading} className="category-list-box dark:shadow-black" />
+          <CategoryList categoryData={categoryData} loading={loading} className="category-list-box dark:shadow-black" menuClass='hidden' />
         </div>
       </div>
 
