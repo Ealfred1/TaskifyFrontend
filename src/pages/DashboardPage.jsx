@@ -12,6 +12,7 @@ const Dashboard = () => {
   const [greeting, setGreeting] = useState('')
   const [currentDate, setCurrentDate] = useState('')
   const [date, setDate] = useState(null)
+  
 
   useEffect(() => {
     const formattedDate = new Date().toLocaleDateString('en-US', {
@@ -44,12 +45,12 @@ const Dashboard = () => {
     <div className="px-1 w-full pr-4">
       <div className="flex flex-col lg:flex-row w-[100%] items-center justify-between sm:space-x-2 space-y-5">
         <div className={`w-full lg:w-[40%] z-10 ${greeting === 'Good Morning' || greeting === 'Good Afternoon' ? 'bg' : 'bg2' } h-80 sm:h-96 rounded-xl`}>
-          <div className="bg-[rgba(255,255,255,0.2)] dark:bg-[rgba(50,50,50,0.1)] w-full h-full p-4 pt-6 space-y-7
+          <div className="bg-[rgba(255,255,255,0.2)] dark:bg-[rgba(50,50,50,0.2)] w-full h-full p-4 pt-6 space-y-7
           rounded-xl text-left">
-            <h1 className="text-xl sm:text-2xl dark:text-gray-300 font-bold mb-4"> {greeting}, {auth.user.username} </h1>
-            <h1 className="text-lg sm:text-xl dark:text-gray-300">You have {dashboardData.pending_tasks} pending tasks </h1>
+            <h1 className={`text-xl sm:text-2xl ${greeting === 'Good Morning' || greeting === 'Good Afternoon' ? 'dark:text-gray-900' : 'dark:text-gray-300'}  font-bold mb-4`}> {greeting}, {auth.user.first_name} </h1>
+            <h1 className={`text-lg sm:text-xl ${greeting === 'Good Morning' || greeting === 'Good Afternoon' ? 'dark:text-gray-900' : 'dark:text-gray-300'} dark:text-gray-300`}>You have {dashboardData.pending_tasks} pending tasks </h1>
 
-            <div className="float-right mt-6 pb-7  w-[70%] h-[50%] md:h-[60%] data overflow-y-auto">
+            <div className="float-right mt-6 pb-7  w-[80%] h-[50%] md:h-[60%] data overflow-y-auto">
               <UpcomingTasks data={dashboardData} />
             </div>
           </div>

@@ -17,8 +17,8 @@ axiosPrivate.interceptors.request.use(
     const token = localStorage.getItem('authTokens');
     if (token) {
       config.headers.Authorization = `Bearer ${JSON.parse(token).access}`
-      console.log('authrosi', config.headers.Authorization)
-      console.log('authrosi', config.headers)
+      // console.log('authrosi', config.headers.Authorization)
+      // console.log('authrosi', config.headers)
     }
     return config
   },

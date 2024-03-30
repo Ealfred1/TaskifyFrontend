@@ -7,6 +7,7 @@ import RegisterImage from '../assets/register.png'
 import axios from '../api/axios'
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import 'primeicons/primeicons.css'
 
 
 
@@ -58,7 +59,7 @@ const RegisterPage = () => {
         setLoading(false)
         console.log(response?.data)
         toast.success("Registration Successful ! Please Login", {
-          position: toast.POSITION.TOP_RIGHT,
+          position: toast.POSITION.TOP_CENTER,
         })
         setFormData({first_name: '',last_name: '',username: '',email: '',password: '',})
       
@@ -70,23 +71,27 @@ const RegisterPage = () => {
           setLoading(false)
           setErrorMsg('No Server Response')
           toast.error(errorMsg, {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.TOP_CENTER,
          })
         } else if (err.response.status === 400) {
           setLoading(false)
           setErrorMsg('Username Taken')
           toast.error(errorMsg, {
-              position: toast.POSITION.TOP_RIGHT,
+              position: toast.POSITION.TOP_CENTER,
            })          
            console.log(errorMsg)
         } else {
           setLoading(false)
           setErrorMsg('Registration Failed')
           toast.error(errorMsg, {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.TOP_CENTER,
          })
         }
+      } finally {
+        setLoading(false)
       }
+    } else {
+      setLoading(false)
     }
   }
   
@@ -164,7 +169,7 @@ const RegisterPage = () => {
           {error.password && <span className="error-message">{error.password}</span>}
           
           <div className="px-2 text-center">
-            <button type="submit" className="btn-auth">{ loading ? 'Signing Up...' : 'Sign Up' } </button>
+            <button type="submit" className="btn-auth disabled:opacity-40" disabled={loading}>{ loading ? <span className="pi pi-spinner pi-spin"></span> : 'Sign Up' } </button>
             <h3 className="mt-2"> Already have an account? <Link to='/login' className="text-purpleP font-bold"> Sign In </Link></h3>
           </div>
           

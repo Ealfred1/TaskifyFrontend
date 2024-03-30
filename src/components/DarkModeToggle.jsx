@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState((localStorage.getItem('dark') ? JSON.parse(localStorage.getItem('dark')) : false))
 
@@ -7,9 +8,12 @@ const DarkModeToggle = () => {
     const htmlElement = document.documentElement;
     if (darkMode) {
       htmlElement.classList.add('dark');
+      import ('primereact/resources/themes/lara-dark-indigo/theme.css')
     } else {
       htmlElement.classList.remove('dark');
+      import ('primereact/resources/themes/lara-light-indigo/theme.css')
     }
+
 
   }, [darkMode])
 

@@ -51,7 +51,7 @@ const LoginPage = () => {
         
         setLoading(false)
         toast.success("Login Successful !", {
-          position: toast.POSITION.TOP_RIGHT,
+          position: toast.POSITION.TOP_CENTER,
         })
         setAuth(response?.data)
         localStorage.setItem('authTokens', JSON.stringify(response?.data))
@@ -67,14 +67,14 @@ const LoginPage = () => {
           setErrorMsg('No Server Response')
           console.log(errorMsg)
           toast.error(errorMsg, {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.TOP_CENTER,
          })
         } else if (err.response.status === 400) {
           setLoading(false)
           setErrorMsg(err.response.data.error)
           console.log(errorMsg)
           toast.error(errorMsg, {
-              position: toast.POSITION.TOP_RIGHT,
+              position: toast.POSITION.TOP_CENTER,
            })                  
           
         } else {
@@ -82,7 +82,7 @@ const LoginPage = () => {
           setErrorMsg('Login Failed')
           console.log(errorMsg)
           toast.error(errorMsg, {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.TOP_CENTER,
          })
         }
       }
@@ -90,7 +90,7 @@ const LoginPage = () => {
   
   
   return (
-    <div className="flex flex-col justify-center items-center w-full relative h-screen bg-white">
+    <div className="flex flex-col justify-center items-center w-full relative h-screen">
     <img src={LoginImage} alt="Login image" className="w-full h-52 object-contain" />
     
       <h1 className="text-gradient text-3xl text-gray-800 mt-9 font-bold">Sign In</h1>
@@ -109,7 +109,7 @@ const LoginPage = () => {
             }
           </div>
           <div className="px-2 text-center">
-            <button type="submit" className="btn-auth">{ loading ? 'Signing In...' : 'Sign In' }</button>
+            <button type="submit" className="btn-auth disabled:opacity-40" disabled={loading}>{ loading ? <span className="pi pi-spinner pi-spin"></span> : 'Sign In' }</button>
             <h3 className="mt-2"> Don't have an account? <Link to="/register" className="text-purpleP font-bold"> Sign Up </Link></h3>
           </div>
          </form>

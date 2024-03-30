@@ -9,7 +9,7 @@ const useFetch = (url) => {
   const fetchdata = async () => {
     try {
       const response = await axiosPrivate.get(url);
-      console.log('data', response.data);
+      console.log('Fetched Data', response.data);
       // Assuming you have a state setter function for dashboardData
       setData(response.data);
     } catch (err) {

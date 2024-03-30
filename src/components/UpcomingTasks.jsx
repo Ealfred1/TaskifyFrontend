@@ -7,7 +7,7 @@ const UpcomingTasks = ({ data }) => {
 
     return (
       <div className="h-full">
-        {data?.recent_tasks && data?.recent_tasks.length > 1 && data?.recent_tasks.filter((task) => new Date(task.due_date) >= today).length > 0 ?  (
+        {data?.recent_tasks && data?.recent_tasks.length >= 1 && data?.recent_tasks.filter((task) => new Date(task.due_date) >= today).length > 0 ?  (
           <div className="">
           <h1 className="text-xl sm:text-2xl text-gray-800 font-bold">Upcoming tasks</h1>
             {data.recent_tasks

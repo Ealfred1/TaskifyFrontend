@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Outlet, Link } from 'react-router-dom'
 import Navbar from './Navbar.jsx'
 import SideBar from './SideBar.jsx'
- 
+
 // import Footer from './Footer.jsx'
 
 const Layout = () => {
@@ -15,7 +15,7 @@ const Layout = () => {
     <>
       <div>
         <Navbar handleSideBarToggle={handleSideBarToggle} closed={sideBarClose} />
-        <SideBar sideBarClose={sideBarClose} />
+        <SideBar sideBarClose={sideBarClose} handleSideBarToggle={handleSideBarToggle} />
         <div className="max-w-7xl h-screen mt-24 sm:ml-[90px]">
           <Outlet />
         </div>

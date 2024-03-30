@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import CategoryList from '../components/CategoryList'
 import useFetch from '../hooks/useFetch'
 import axiosPrivate from '../api/axiosPrivate'
@@ -56,6 +57,7 @@ const CategoryPage = () => {
         }
      finally {
       setNewCategory('')
+      setLoading(false)
     }
 
   }
@@ -64,10 +66,6 @@ const CategoryPage = () => {
   	fetchdata()
   }, [loading])
 
-  useEffect(() => {
-    console.log('mounted');
-  }, [])
-
   return (
 		<div className='mx-3'>
 			<div className='text-left my-5'>
@@ -75,7 +73,7 @@ const CategoryPage = () => {
 			</div>
 
 			<form method="post" onSubmit={handleCategoryCreation}>
-			<div className="w-[100%] md:w-[60%] h-14 flex text-base outline-none text-gray-500">
+			<div className="w-[100%] md:w-[92%] lg:w-[60%] h-14 flex text-base outline-none text-gray-500">
         		<div className='w-[80%]'>
         			<input type="text" onChange={handleInputChange} value={newCategory} className='h-full w-full px-5 border border-gray-300 dark:border-gray-500 rounded-l-xl outline-none focus:border focus:border-blue-500 dark:bg-transparent dark:text-gray-300' placeholder="Create category..." />
         		</div>

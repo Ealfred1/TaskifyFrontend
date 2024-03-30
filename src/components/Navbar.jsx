@@ -6,7 +6,7 @@ import DarkModeToggle from './DarkModeToggle'
 const Navbar = ({ handleSideBarToggle, closed }) => {
   
   return (
-    <nav className="navbar dark:bg-slate-900 dark:border dark:border-slate-900 dark:border-b-gray-500">
+    <nav className="navbar bg-transparent backdrop-blur-2xl dark:bg-slate-900 dark:border dark:border-slate-900 dark:border-b-gray-500">
       <div className="logo-items">
         <FontAwesomeIcon icon={ closed ? faClose : faBars } className="" onClick={handleSideBarToggle} />
         <h2 className="text-2xl">Taskify</h2>

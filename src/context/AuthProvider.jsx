@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
   
   const updateToken = async () => {
-    console.log('token updated')
+    // console.log('token updated')
     try {
         const response = await axios.post('/login/refresh/', 
           JSON.stringify({ 'refresh': JSON.parse(localStorage.getItem('authTokens')).refresh }),
@@ -31,16 +31,16 @@ export const AuthProvider = ({ children }) => {
           access: response.data.access,
           refresh: response.data.refresh
         }
-        console.log('updatedTokens', updatedTokens)
+        //console.log('updatedTokens', updatedTokens)
         
         localStorage.setItem('authTokens', JSON.stringify(updatedTokens))
         // console.log(localStorage.getItem('authTokens'))
         
       } catch (err) {
         if (!err?.response) {
-          console.log('no server response')
+          //console.log('no server response')
         } else if (err.response.status === 400) {
-          console.log(err.response.data.error)
+          //console.log(err.response.data.error)
         } else {
           console.log('Request Failed')
          // logout()
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     { loading && updateToken() }
     // console.log(localStorage.getItem('authTokens'))
-    const fourMinutes = 1000 * 60 * 4;
+    const fourMinutes = 1000 * 60 * 13;
     
     const interval = setInterval(() => {
       auth && updateToken()
