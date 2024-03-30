@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
+import useTasks from '../hooks/useTasks'
 import CreateTask from '../components/CreateTask'
 
 const CategoryDetailPage = () => {
@@ -9,7 +10,7 @@ const CategoryDetailPage = () => {
 	const URL = `/categories/${id}`
 	const { data, loading, error } = useFetch(URL)
 	const [toggle, setToggle] = useState(false)
-	const categoryData = JSON.parse(localStorage.getItem("data")).categories
+	const { categoryData } = useTasks()
 	const category = categoryData.find((category) => category.id === parseInt(id));
 
 	const handleToggle = () => {

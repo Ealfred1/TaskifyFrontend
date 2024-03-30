@@ -1,14 +1,21 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CategoryPopup from './CategoryPopup'
+import CategoryEdit from './CategoryEdit'
 import useTasks from '../hooks/useTasks'
 
 const CategoryList = ({ categoryData, loading, className, menuClass }) => {
 	const navigate = useNavigate()
 	const [openMenu, setOpenMenu] = useState(false)
 	const [menuId, setMenuId] = useState(null)
+	const [editId, setEditId] = useState(null)
 	const [categoryMessage, setCategoryMessage] = useState('')
 	const { toggle, handleToggle } = useTasks()
+	const [editToggle, setEditToggle] = useState(false)
+
+	const handleEditToggle = () => {
+		setEditToggle(!editToggle)
+	}
 
 	const handleCategoryClick = (id) => {
 		navigate(`/category/${id}`)
@@ -27,13 +34,17 @@ const CategoryList = ({ categoryData, loading, className, menuClass }) => {
 	}
 
 	const handleCategoryEdit = (id) => {
-		alert('loaded')
+		setEditId(id)
+		handleEditToggle()
 	}
 	return (
 		<>
 			{ loading && <div className="flex items-center justify-center text-9xl dark:text-gray-300 w-full h-full"><h1 className="text-gray-400 text-center"><i className="pi pi-spinner pi-spin"></i></h1></div> }
 			<div className="">
 					{ categoryMessage.length > 0 && menuId === menuId && (<CategoryPopup message={categoryMessage} categoryId={menuId} toggle={toggle} handleToggle={handleToggle} />) }
+
+					{ editId === editId && (<CategoryEdit categoryId={editId} toggle={editToggle} handleToggle={handleEditToggle} />) }
+
 				</div>
 			{ categoryData.length > 0 && categoryData.map((data) => (
 				<div className={`${className} bg-gradient-to-r from-purpleP to-purple-400 dark:to-purple-500 relative`} key={data.id}>

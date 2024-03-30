@@ -1,16 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axiosPrivate from '../api/axiosPrivate'
 import { ToastContainer, toast } from "react-toastify"
 import useTasks from '../hooks/useTasks'
 
-const CategoryEdit = ({ message, categoryId, toggle, handleToggle }) => {
-	const { getCategories } = useTasks()
+const CategoryEdit = ({ parseCategory, categoryId, toggle, handleToggle }) => {
+	const { getCategories, categoryData } = useTasks()
+	const [newCategoryName, setNewCategoryName] = useState('')
+	const [error, setError] = useState('')
+
+	const handleInputChange = (e) => {
+		setNewCategoryName(e.target.value)
+	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		if (newCategoryName.length <= 1) {
+			setError('Please complete the category name ')
+			return false;
+		}
 		try {
-	      const response = await axiosPrivate.delete(`/categories/${categoryId}`)
-	      console.log('deleted cat', response.data)
+	      const response = await axiosPrivate.put(`/categories/${categoryId}`, 
+      		JSON.stringify({ "name": newCategoryName }))
+	      console.log('updated cat', response.data)
 	      toast.success("Success!", {
 	          position: toast.POSITION.TOP_CENTER,
 	        })
@@ -18,7 +29,7 @@ const CategoryEdit = ({ message, categoryId, toggle, handleToggle }) => {
 	      getCategories()
 	      // fetchdata()
 	    } catch (err) {
-	         console.log('deleted', err)
+	         console.log('updated', err)
 	         toast.error("Failed!", {
 	          position: toast.POSITION.TOP_CENTER,
 	        })
@@ -27,19 +38,33 @@ const CategoryEdit = ({ message, categoryId, toggle, handleToggle }) => {
 	     	console.log('done')	
 	     }
 	}
+
+	useEffect(() => {
+		// setNewCategoryName(parseCategory.name)
+		console.log('am loaded', parseCategory)
+	}, [])
 	
 	return (
 		<>
 			<div className={`absolute inset-0 z-[1] flex items-center justify-center menu ${toggle ? 'toggle' : '' }`}>
-				<form method="post" onSubmit={handleSubmit} className={`w-[95%] md:w-[60%] h-[18rem] lg:w-[40%] bg-slate-50 dark:bg-slate-900 border border-gray-200 dark:border-none dark:outline dark:outline-[1px] dark:outline-gray-500 h-[70%] flex flex-col fixed z-[1] rounded-lg shadow-2xl menu ${toggle ? 'toggle' : '' }`}>
-				<div className="w-full rounded-t-lg h-14 mb-4 font-bold bg-red-500 flex items-center justify-center text-white">
-					Delete Category
+				<form method="post" onSubmit={handleSubmit} className={`w-[95%] md:w-[60%] h-[17rem] lg:w-[40%] bg-slate-50 dark:bg-slate-900 border border-gray-200 dark:border-none dark:outline dark:outline-[1px] dark:outline-gray-500 h-[70%] flex flex-col fixed z-[1] rounded-lg shadow-2xl menu ${toggle ? 'toggle' : '' }`}>
+				<div className="w-full rounded-t-lg h-14 mb-4 font-bold bg-purpleP flex items-center justify-center text-white">
+					Edit Category
 				</div>
-				<label className="task-label text-lg text-gray-400 px-2">{ message }</label>
+				<div className="flex flex-col space-y-2 mb-2 text-gray-800 p-1 px-3">
+						<label className="task-label">Change Category Name</label>
+						<input type="text" 
+			              value={newCategoryName}
+			              onChange={handleInputChange}
+			              className="task-input"
+			              placeholder="Business 🤔️"
+			            />
+			            { error && <span className="error-message">{error}</span> }
+				</div>
 
 				<div className="flex justify-between absolute bottom-0 px-2 w-full gap-4 mt-4 bg-slate-50 dark:bg-slate-900 rounded-lg py-2">
 			          <a onClick={handleToggle} className="bg-none border border-gray-500 btn2 text-gray-500">Go back</a>
-			          <button type="submit" className="text-center w-1/2 h-14 text-lg rounded-lg text-white bg-red-500 hover:scale-[1.033]">Delete</button>
+			          <button type="submit" className="text-center w-1/2 h-14 text-lg rounded-lg text-white bg-green-500 hover:scale-[1.033]">Update</button>
 			    </div>
 				</form>
 			</div>

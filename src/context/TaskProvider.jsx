@@ -9,7 +9,7 @@ export const TaskProvider = ({ children }) => {
   const [categoryData, setCategoryData] = useState({})
   const [taskData, setTaskData] = useState({})
   const [loading, setLoading] = useState(true)
-  const [categoryLoading, setCategoryLoading] = useState(false)
+  const [categoryLoading, setCategoryLoading] = useState(true)
   const [categoryError, setCategoryError] = useState({})
   const [error, setError] = useState(null)
   const [toggle, setToggle] = useState(false)
@@ -65,7 +65,7 @@ export const TaskProvider = ({ children }) => {
   useEffect(() => {
     getTasks()
     getCategories()
-  }, [loading])
+  }, [loading, categoryLoading])
   
   return (
       <TaskContext.Provider value={{ taskData, error, getTasks, getCategories, categoryLoading, setCategoryLoading, categoryData, loading, handleToggle, toggle }}>
