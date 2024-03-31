@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import axiosPrivate from '../api/axiosPrivate'
 import { ToastContainer, toast } from "react-toastify"
+import useFetch from '../hooks/useFetch'
 import useTasks from '../hooks/useTasks'
 
-const CategoryEdit = ({ parseCategory, categoryId, toggle, handleToggle }) => {
+const CategoryEdit = ({ categoryId, toggle, handleToggle }) => {
 	const { getCategories, categoryData } = useTasks()
 	const [newCategoryName, setNewCategoryName] = useState('')
 	const [error, setError] = useState('')
+	const URL = `/categories/${categoryId}`
 
 	const handleInputChange = (e) => {
 		setNewCategoryName(e.target.value)
@@ -19,9 +21,8 @@ const CategoryEdit = ({ parseCategory, categoryId, toggle, handleToggle }) => {
 			return false;
 		}
 		try {
-	      const response = await axiosPrivate.put(`/categories/${categoryId}`, 
+	      const response = await axiosPrivate.put(URL, 
       		JSON.stringify({ "name": newCategoryName }))
-	      console.log('updated cat', response.data)
 	      toast.success("Success!", {
 	          position: toast.POSITION.TOP_CENTER,
 	        })
@@ -29,20 +30,16 @@ const CategoryEdit = ({ parseCategory, categoryId, toggle, handleToggle }) => {
 	      getCategories()
 	      // fetchdata()
 	    } catch (err) {
-	         console.log('updated', err)
 	         toast.error("Failed!", {
 	          position: toast.POSITION.TOP_CENTER,
 	        })
 	        }
 	     finally {
-	     	console.log('done')	
+	     	setError('')
+	     	setNewCategoryName('')
 	     }
 	}
 
-	useEffect(() => {
-		// setNewCategoryName(parseCategory.name)
-		console.log('am loaded', parseCategory)
-	}, [])
 	
 	return (
 		<>
@@ -57,7 +54,7 @@ const CategoryEdit = ({ parseCategory, categoryId, toggle, handleToggle }) => {
 			              value={newCategoryName}
 			              onChange={handleInputChange}
 			              className="task-input"
-			              placeholder="Business 🤔️"
+			              placeholder="Write a new name for your category  😄️"
 			            />
 			            { error && <span className="error-message">{error}</span> }
 				</div>

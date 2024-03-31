@@ -63,6 +63,24 @@ const Dashboard = () => {
         </div>
       </div>
 
+      <div className="w-full mt-12 md:mt-20 p-3">
+        <h1 className="text-lg md:text-xl text-gray-500 my-4 font-semibold">Task Summary</h1>
+        <div className="flex flex-wrap gap-4">
+          <div className="box-stat">
+            { dashboardData.completed_tasks }
+          </div>
+          <div className="box-stat">
+            { dashboardData.task_todo }
+          </div>
+          <div className="box-stat">
+            { dashboardData.task_in_progress }
+          </div>
+          <div className="box-stat">
+            { dashboardData.total_categories }
+          </div>
+        </div>
+      </div>
+
       <div className='mt-12 md:mt-20 p-3'>
         <h1 className='text-lg md:text-xl text-gray-500 my-4 font-bold'> Your Categories</h1>
         <div className='category-list'>

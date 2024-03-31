@@ -18,6 +18,13 @@
    transition: 0.8s all ease-in-out;
  }
 
+ .box-stat {
+  @apply w-[45%] md:w-[45%] lg:w-[17rem] flex flex-col h-32 md:h-52 rounded-xl p-4 flex items-center justify-center;
+  background-image: linear-gradient(320deg, #8083ff 50%, #4E90EF);
+  background-size: 800px 500px;
+  background-repeat: no-repeat;
+}
+
  .bg {
   background-image: url('./assets/bg1.jpg');
   background-size: cover;
@@ -204,6 +211,9 @@
         @apply border border-[2.7px] border-gray-400 dark:border-gray-300 text-white;
   }
 
+
+
+
   .error-message {
     @apply bg-red-300 bg-opacity-50 w-full -ml-0.5 px-4 py-2 rounded-lg text-sm h-10 text-red-600 dark:text-red-200 border border-red-500 transition-all duration-200 ease-in-out mb-2;
   }
@@ -214,6 +224,7 @@
   padding: 10px;
   margin: 0 0 4rem 0;
 }
+
 
 .category-list-box {
   flex: 0 0 300px;
