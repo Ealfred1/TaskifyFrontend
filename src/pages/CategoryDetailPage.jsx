@@ -59,8 +59,8 @@ const CategoryDetailPage = () => {
   
 	
 	return (
-		<div className="w-full h-screen flex items-center px-2 py-9">
-			<div className="w-full dark:bg-[rgba(255,255,255,0.1)] border border-gray-200 dark:border-none rounded-xl p-3">
+		<div className="w-full flex px-2 py-9">
+			<div className="w-full py-4 dark:bg-[rgba(255,255,255,0.1)] border border-gray-200 dark:border-none rounded-xl px-3">
 				<div className="w-full h-16 flex items-center justify-center">
 					<h1 className="text-center text-4xl text-purpleP flex items-center justify-center rounded-3xl transform -translate-y-9 font-bold w-96 h-16 bg-slate-50 dark:bg-slate-900 duration-500">{data.name}</h1>
 				</div>

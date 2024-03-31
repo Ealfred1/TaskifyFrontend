@@ -28,14 +28,14 @@ const TaskList = ({ data, loading, className, getTasks }) => {
 	useEffect(()=> {
 		getTasks()
 	}, [loading])
-	
+
 	return (
 		<div className="w-full">
 			<div className="space-y-2">
 				{ data.length > 0 && data.map((task) => (
 					<div className="flex items-center justify-between px-2 rounded-xl task-list relative h-20" key={task.id}>
 						<div className="space-x-3">
-							<input type="checkbox" className="accent-white" onChange={() => handleTaskCompleted(task.id, task.completed)} checked={task.completed} />
+							<input type="checkbox" className="accent-white translate-y-2" onChange={() => handleTaskCompleted(task.id, task.completed)} checked={task.completed} />
 							<label className="task-label-2">{ task.title }</label>
 							<p className="text-[9.5px] pl-3 dark:text-gray-300">{ humanizeTime(task.due_date) }</p>
 						</div>
