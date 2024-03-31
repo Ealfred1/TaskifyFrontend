@@ -229,9 +229,15 @@
   }
 
   .task-list {
-/*    background-image: linear-gradient(to right, #8083ff, #4D70EF);
-    background-size: 1000px 1px 2px 3px;
-    background-repeat: no-repeat*/;
+    @apply bg-gradient-to-r from-purple-300 to-blue-300 dark:from-purple-800 dark:to-blue-800;
+  }
+
+  .task-label-2 {
+    @apply text-sm text-gray-700 dark:text-gray-300 font-semibold;
+  }
+
+  .task-list:hover {
+    transform: scale(1.013);
   }
 
 

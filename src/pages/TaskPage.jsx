@@ -17,7 +17,7 @@ const TaskPage = () => {
              <h1 className="text-lg md:text-xl text-gradient font-semibold">Task List</h1>
            </div>
            <div className="">
-             <button className="border rounded-lg w-40 h-11 border-gray-400 dark:text-gray-300 hover:bg-blue-main transition-colors duration-500 hover:text-white hover:border-none" onClick={handleToggle}><i className="bx bx-plus"></i> Create Task</button>
+             <button className="border rounded-lg w-40 h-11 border-gray-400 text-gray-500 dark:text-gray-300 hover:bg-blue-main transition-colors duration-500 hover:text-white hover:border-none" onClick={handleToggle}><i className="bx bx-plus"></i> Create Task</button>
            </div>
          </div>
 
