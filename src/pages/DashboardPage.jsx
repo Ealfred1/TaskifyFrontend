@@ -67,16 +67,32 @@ const Dashboard = () => {
         <h1 className="text-lg md:text-xl text-gray-500 my-4 font-semibold">Task Summary</h1>
         <div className="flex flex-wrap gap-4">
           <div className="box-stat">
-            { dashboardData.completed_tasks }
+            <div className="h-full flex items-center text-white justify-center gap-2 text-sm md:text-lg font-bold">
+              <span className="pi pi-check-square font-bold"></span>
+              <h1 className="">Completed Tasks</h1>
+            </div>
+            <h1 className="text-4xl lg:text-5xl text-white font-semibold">{ dashboardData.completed_tasks }</h1>
           </div>
           <div className="box-stat">
-            { dashboardData.task_todo }
+            <div className="h-full flex items-center text-white justify-center gap-2 text-sm md:text-lg font-bold">
+              <span className="pi pi-check-square font-bold"></span>
+              <h1 className=""> Task  Todo</h1>
+            </div>
+            <h1 className="text-4xl lg:text-5xl text-white font-semibold">{ dashboardData.task_todo }</h1>
           </div>
           <div className="box-stat">
-            { dashboardData.task_in_progress }
+            <div className="h-full flex items-center text-white justify-center gap-2 text-sm md:text-lg font-bold">
+              <span className="pi pi-check-square font-bold"></span>
+              <h1 className="">Tasks In Progress</h1>
+            </div>
+            <h1 className="text-4xl lg:text-5xl text-white font-semibold">{ dashboardData.task_in_progress }</h1>
           </div>
           <div className="box-stat">
-            { dashboardData.total_categories }
+            <div className="h-full flex items-center text-white justify-center gap-2 text-sm md:text-lg font-bold">
+              <span className="pi pi-check-square font-bold"></span>
+              <h1 className="">Total Task Categories</h1>
+            </div>
+            <h1 className="text-4xl lg:text-5xl text-white font-semibold">{ dashboardData.total_categories }</h1>
           </div>
         </div>
       </div>
@@ -84,7 +100,7 @@ const Dashboard = () => {
       <div className='mt-12 md:mt-20 p-3'>
         <h1 className='text-lg md:text-xl text-gray-500 my-4 font-bold'> Your Categories</h1>
         <div className='category-list'>
-          <CategoryList categoryData={categoryData} loading={loading} className="category-list-box dark:shadow-black" menuClass='hidden' />
+          <CategoryList categoryData={categoryData} loading={loading} className="category-list-box dark:shadow-black" menuClass='hidden scale-[0]' />
         </div>
       </div>
 

@@ -19,7 +19,7 @@
  }
 
  .box-stat {
-  @apply w-[45%] md:w-[45%] lg:w-[17rem] flex flex-col h-32 md:h-52 rounded-xl p-4 flex items-center justify-center;
+  @apply w-[45%] md:w-[45%] lg:w-[17rem] flex flex-col h-32 md:h-44 rounded-xl p-4 flex;
   background-image: linear-gradient(320deg, #8083ff 50%, #4E90EF);
   background-size: 800px 500px;
   background-repeat: no-repeat;
@@ -146,8 +146,13 @@
     @apply my-6 gap-y-12 flex flex-wrap w-[100%] justify-around md:justify-start md:gap-12;
   }
 
+
   .category-box {
     @apply w-[98%] md:w-[17rem] lg:w-[20rem] flex flex-col h-48 md:h-52 rounded-xl bg-white shadow-lg shadow-gray-200 p-4;
+  }
+
+  .category-box:nth-child(2) {
+    @apply ml-0 md:-ml-[3rem];
   }
 
   .upcoming {
