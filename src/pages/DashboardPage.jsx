@@ -24,8 +24,18 @@ const Dashboard = () => {
     })
     setCurrentDate(formattedDate)
   }, [])
+
+
+  useEffect(() => {
+    const speakWelcome = () => {
+      const message = new SpeechSynthesisUtterance('welcome')
+      window.speechSynthesis.speak(message)
+    }
+    speakWelcome()
+  }, [])
   
   useEffect(() => {
+
     const getCurrentTime = () => {
       const hour = new Date().getHours()
       if (hour >= 0 && hour < 12) {
