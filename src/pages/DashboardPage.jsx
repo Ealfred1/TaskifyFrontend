@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const speakWelcome = () => {
-      const message = new SpeechSynthesisUtterance(`${greeting}, ${auth.user.first_name}`)
+      const message = new SpeechSynthesisUtterance(`Hello ${auth.user.first_name}, you have ${dashboardData.pending_tasks} pending tasks!`)
       window.speechSynthesis.speak(message)
     }
     speakWelcome()
