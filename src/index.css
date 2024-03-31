@@ -229,7 +229,7 @@
   }
 
   .task-list {
-    @apply bg-gradient-to-r from-purple-300 to-blue-300 dark:from-purple-800 dark:to-blue-800;
+    @apply bg-gradient-to-r from-purple-300 to-blue-300 dark:from-purple-800 dark:to-blue-800 transition duration-500;
   }
 
   .task-label-2 {

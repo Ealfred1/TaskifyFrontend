@@ -10,8 +10,8 @@ const TaskPage = () => {
 
 
 	return (
-		<div className="w-full h-screen flex justify-center p-2">
-			 <div className="w-full h-auto dark:bg-[rgba(255,255,255,0.1)] border border-gray-200 dark:border-none rounded-xl p-3">
+		<div className="w-full h-screen flex items-center p-2">
+			 <div className="w-full lg:mt-44 dark:bg-[rgba(255,255,255,0.1)] border border-gray-200 dark:border-none rounded-xl p-3">
          <div className="flex justify-between w-full mb-4 h-12">
            <div className="py-2">
              <h1 className="text-lg md:text-xl text-gradient font-semibold">Task List</h1>
@@ -26,6 +26,20 @@ const TaskPage = () => {
               <h1 className="text-xl dark:text-gray-200 line font-bold">ToDo</h1>
            </div>
            <TaskList data={taskData.length > 0 && taskData.filter((data) => data.status === 'todo')} loading={loading} getTasks={getTasks} />
+         </div>
+
+         <div className="w-full">
+           <div className="text-gray-600 relative py-2 mb-5 w-full">
+              <h1 className="text-xl dark:text-gray-200 line font-bold">In Progress</h1>
+           </div>
+           <TaskList data={taskData.length > 0 && taskData.filter((data) => data.status === 'in_progress')} loading={loading} getTasks={getTasks} />
+         </div>
+
+         <div className="w-full">
+           <div className="text-gray-600 relative py-2 mb-5 w-full">
+              <h1 className="text-xl dark:text-gray-200 line font-bold">Completed</h1>
+           </div>
+           <TaskList data={taskData.length > 0 && taskData.filter((data) => data.status === 'completed')} loading={loading} getTasks={getTasks} />
          </div>
 
          <div className="">
