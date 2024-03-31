@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const speakWelcome = () => {
-      const message = new SpeechSynthesisUtterance('welcome')
+      const message = new SpeechSynthesisUtterance(`${greeting}, ${auth.user.first_name}`)
       window.speechSynthesis.speak(message)
     }
     speakWelcome()
