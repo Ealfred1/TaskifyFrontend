@@ -97,7 +97,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className='mt-12 md:mt-20 p-3'>
+      <div className='mt-12 p-3'>
         <h1 className='text-lg md:text-xl text-gray-500 my-4 font-bold'> Your Categories</h1>
         <div className='category-list'>
           <CategoryList categoryData={categoryData} loading={loading} className="category-list-box dark:shadow-black" menuClass='hidden scale-[0]' />
