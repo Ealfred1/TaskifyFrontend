@@ -10,7 +10,7 @@ const TaskPage = () => {
 
 
 	return (
-		<div className="w-full h-screen flex items-center p-2">
+		<div className="w-full h-screen flex items-center px-2 py-9">
 			 <div className="w-full lg:mt-44 dark:bg-[rgba(255,255,255,0.1)] border border-gray-200 dark:border-none rounded-xl p-3">
          <div className="flex justify-between w-full mb-4 h-12">
            <div className="py-2">

@@ -27,7 +27,8 @@ const TaskList = ({ data, loading, className, getTasks }) => {
 
 	useEffect(()=> {
 		getTasks()
-	}, [loading, taskCompleted])
+	}, [loading])
+	
 	return (
 		<div className="w-full">
 			<div className="space-y-2">
