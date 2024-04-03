@@ -31,11 +31,13 @@ const CategoryList = ({ categoryData, loading, className, menuClass }) => {
 		let message = "You about to delete a task category, note that all the task in this category will be deleted as well!"
 		setCategoryMessage(message)
 		handleToggle()
+    	window.scrollTo(0, 0); // Scroll to the top on route change
 	}
 
 	const handleCategoryEdit = (id) => {
 		setEditId(id)
 		handleEditToggle()
+		window.scrollTo(0, 0);
 	}
 	return (
 		<>

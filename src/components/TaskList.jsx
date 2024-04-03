@@ -35,9 +35,15 @@ const TaskList = ({ data, loading, className, getTasks }) => {
 				{ data.length > 0 && data.map((task) => (
 					<div className="flex items-center justify-between px-2 rounded-xl task-list relative h-20" key={task.id}>
 						<div className="space-x-3">
-							<input type="checkbox" className="accent-white translate-y-2" onChange={() => handleTaskCompleted(task.id, task.completed)} checked={task.completed} />
+							<input type="checkbox" className="accent-slate-900 dark:accent-white translate-y-2" onChange={() => handleTaskCompleted(task.id, task.completed)} checked={task.completed} />
 							<label className="task-label-2">{ task.title }</label>
-							<p className="text-[9.5px] pl-3 dark:text-gray-300">{ humanizeTime(task.due_date) }</p>
+							<div className="flex">
+								<p className="text-[9.5px] pl-3 dark:text-gray-300"><i className="pi pi-calendar-minus text-[9.5px]"></i> { humanizeTime(task.due_date) }</p>
+								{ task.reminder.length > 0 &&  (<p className="text-[9.5px] pl-3 dark:text-gray-300 translate-y-[1px]"><i className="pi pi-stopwatch text-[9.5px]"></i> { task.reminder }</p>) }
+							</div>
+						</div>
+						<div className="">
+							{/* add the user team pics here */}
 						</div>
 						<div className="flex items-center relative">
 							<button className="w-[2rem] h-[2rem] flex items-center justify-center rounded-full hover:bg-purpleP bg-opacity-100 text-right text-white"><span className="pi pi-ellipsis-v text-lg md:text-xl"></span></button>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axiosPrivate from '../api/axiosPrivate'
 import { ToastContainer, toast } from "react-toastify"
 import useTasks from '../hooks/useTasks'
@@ -11,7 +11,7 @@ const CategoryPopup = ({ message, categoryId, toggle, handleToggle }) => {
 		try {
 	      const response = await axiosPrivate.delete(`/categories/${categoryId}`)
 	      console.log('deleted cat', response.data)
-	      toast.success("Success!", {
+	      toast.success("Category Deleted!", {
 	          position: toast.POSITION.TOP_CENTER,
 	        })
 	      handleToggle()
@@ -27,7 +27,8 @@ const CategoryPopup = ({ message, categoryId, toggle, handleToggle }) => {
 	     	console.log('done')	
 	     }
 	}
-	
+
+
 	return (
 		<>
 			<div className={`absolute inset-0 z-[1] flex items-center justify-center menu ${toggle ? 'toggle' : '' }`}>

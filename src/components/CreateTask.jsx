@@ -13,6 +13,7 @@ const CreateTask = ({ toggle, handleToggle, categoryDetail }) => {
 	    due_date: '',
 	    priority: '',
 	    status: '',
+	    reminder: '',
   	})
   	const [error, setError] = useState({})
   	const { getTasks, categoryData } = useTasks()
@@ -71,6 +72,7 @@ const CreateTask = ({ toggle, handleToggle, categoryDetail }) => {
 		    due_date: '',
 		    priority: '',
 		    status: '',
+		    reminder: '',
 	      })
 
 	    }
@@ -132,10 +134,20 @@ const CreateTask = ({ toggle, handleToggle, categoryDetail }) => {
 			              value={formData.due_date}
 			              onChange={handleInputChange}
 			              className="task-input"
-			              placeholder="Fix code bugs"
 			            />
 			            { error.due_date && <span className="error-message">{error.due_date}</span> }
 					</div>
+
+					<div className="flex flex-col space-y-2 mb-2 text-gray-800 p-1">
+						<label className="task-label">Set Reminder</label>
+						<input type="time" 
+			              name="reminder" 
+			              value={formData.reminder}
+			              onChange={handleInputChange}
+			              className="task-input"
+			            />
+					</div>
+
 
 					<div className="flex flex-col space-y-2 mb-2 text-gray-800 p-1">
 						<label className="task-label">Priority</label>
