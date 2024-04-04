@@ -43,6 +43,12 @@ const CategoryDetailPage = () => {
   const handleToggle = () => {
     	setToggle(!toggle)
  	}
+
+ 	useEffect(() => {
+ 		setInterval(() => {
+ 			getTasks()
+ 		}, 1000)
+ 	}, [])
   
   useEffect(() => {
     getTasks();
@@ -97,7 +103,7 @@ const CategoryDetailPage = () => {
 		         </div>
 
          		<div className="">
-           			<CreateTask toggle={toggle} handleToggle={handleToggle} categoryDetail={category.name} />
+           			<CreateTask toggle={toggle} handleToggle={handleToggle} categoryDetail={category.name} categoryTask={getTasks} />
          		</div> 		
 			</div>
 		</div>

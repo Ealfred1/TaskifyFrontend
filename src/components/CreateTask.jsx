@@ -5,7 +5,7 @@ import useTasks from '../hooks/useTasks'
 import useDashboard from '../hooks/useDashboard'
 import axiosPrivate from '../api/axiosPrivate'
 
-const CreateTask = ({ toggle, handleToggle, categoryDetail }) => {
+const CreateTask = ({ toggle, handleToggle, categoryDetail, categoryTask }) => {
 	const [formData, setFormData] = useState({
 	    title: '',
 	    description: '',
