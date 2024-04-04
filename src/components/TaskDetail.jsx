@@ -118,7 +118,7 @@ const TaskDetail = ({ open, setOpen, id }) => {
 	    
 
 	return (
-		<div className={`mt-16 w-[70%] lg:w-[40%] task-detail ${ open ? 'open' : '' } h-screen fixed top-0 z-[1] bottom-0 dark:bg-slate-900 border-l border-l-gray-500 overflow-scroll`}>
+		<div className={`mt-16 w-[85%] md:w-[70%] lg:w-[40%] task-detail ${ open ? 'open' : '' } h-screen fixed top-0 z-[1] bottom-0 dark:bg-slate-900 border-l border-l-gray-500 overflow-scroll`}>
 			<span className="pi pi-times-circle absolute top-8 right-4" onClick={() => setOpen(false)}></span>
 			<form method="post" className="py-16 px-2" onSubmit={handleSubmit}>
 					<div className="flex text-gray-800 items-center justify-center new relative py-2 mb-5">

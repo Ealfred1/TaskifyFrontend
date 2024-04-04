@@ -32,7 +32,7 @@ const CategoryPopup = ({ message, categoryId, toggle, handleToggle }) => {
 	return (
 		<>
 			<div className={`absolute inset-0 z-[1] flex items-center justify-center menu ${toggle ? 'toggle' : '' }`}>
-				<form method="post" onSubmit={handleSubmit} className={`w-[95%] md:w-[60%] h-56 lg:w-[40%] bg-slate-50 dark:bg-slate-900 border border-gray-200 dark:border-none dark:outline dark:outline-[1px] dark:outline-gray-500 h-[70%] flex flex-col fixed z-[1] rounded-lg shadow-2xl menu ${toggle ? 'toggle' : '' }`}>
+				<form method="post" onSubmit={handleSubmit} className={`w-[95%] md:w-[60%] h-48 md:h-56 lg:w-[40%] bg-slate-50 dark:bg-slate-900 border border-gray-200 dark:border-none dark:outline dark:outline-[1px] dark:outline-gray-500 h-[70%] flex flex-col fixed z-[1] rounded-lg shadow-2xl menu ${toggle ? 'toggle' : '' }`}>
 				<div className="w-full rounded-t-lg h-14 mb-4 font-bold bg-red-500 flex items-center justify-center text-white">
 					Delete Category
 				</div>

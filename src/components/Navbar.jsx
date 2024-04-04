@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons'
-import Image from '../assets/bg1.jpg'
+import Image from '../assets/profile.jpeg'
 import DarkModeToggle from './DarkModeToggle'
 
 const Navbar = ({ handleSideBarToggle, closed }) => {
