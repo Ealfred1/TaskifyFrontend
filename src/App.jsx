@@ -11,6 +11,7 @@ import CategoryPage from './pages/CategoryPage'
 import CategoryDetailPage from './pages/CategoryDetailPage'
 import CalendarPage from './pages/CalendarPage'
 import SearchPage from './pages/SearchPage'
+import ProjectPage from './pages/ProjectPage'
 import RequireAuth from './components/RequireAuth'
 
 
@@ -33,6 +34,7 @@ const App = () => {
             <Route path='/category/:id' element={<CategoryDetailPage />} />
             <Route path='/calendar' element={<CalendarPage />} />
             <Route path='/search' element={<SearchPage />} />
+            <Route path='/projects' element={<ProjectPage />} />
           </Route>
         </Route>
       </Routes>

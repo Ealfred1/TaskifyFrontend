@@ -4,6 +4,7 @@ import humanizeTime from '../utils/humanizeTime'
 const UpcomingTasks = ({ data }) => {
   const getUpcomingTasks = () => {
   const today = new Date()
+  const [message, setMessage] = useState("")
 
     return (
       <div className="h-full">
@@ -13,7 +14,7 @@ const UpcomingTasks = ({ data }) => {
             {data.recent_tasks
               .filter((task) => new Date(task.due_date) >= today)
               .map((task) => (
-                <div key={task.id} className='upcoming'>
+                <div key={task.id} className={`${task.completed === false ? 'upcoming' : 'hidden'}`}>
                   <h1 className="text-xs md:text-lg text-gray-800 font-semibold -mb-1">{task.title}</h1>
                   <small className="text-[0.5rem] md:text-[0.7rem] text-blue-main font-semibold">{humanizeTime(task.due_date)}</small>
                 </div>

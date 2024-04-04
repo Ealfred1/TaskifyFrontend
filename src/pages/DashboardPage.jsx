@@ -6,11 +6,12 @@ import useTasks from '../hooks/useTasks'
 import axiosPrivate from '../api/axiosPrivate'
 import UpcomingTasks from '../components/UpcomingTasks'
 import CategoryList from '../components/CategoryList'
+import TaskList from '../components/TaskList'
 
 const Dashboard = () => {
   const { auth } = useAuth()
   const { dashboardData, loading } = useDashboard()
-  const { categoryData } = useTasks()
+  const { categoryData, loading:taskLoading, getTasks } = useTasks()
   const [greeting, setGreeting] = useState('')
   const [currentDate, setCurrentDate] = useState('')
   const [date, setDate] = useState(null)
@@ -105,6 +106,15 @@ const Dashboard = () => {
             <h1 className="text-4xl lg:text-5xl text-white font-semibold">{ dashboardData.total_categories }</h1>
           </div>
         </div>
+      </div>
+
+      <div className="mt-12 p-3">
+        <h1 className="text-lg md:text-xl text-gray-500 my-4 font-bold">Recent Tasks</h1>
+        { dashboardData.recent_tasks.length > 0 ? (
+            <TaskList data={dashboardData.recent_tasks} loading={taskLoading} getTasks={getTasks} />
+          ) : (
+              <div className="text-xl text-gray-500">Oops, you don't have any recent tasks yet!!</div>
+          ) }
       </div>
 
       <div className='mt-12 p-3'>
