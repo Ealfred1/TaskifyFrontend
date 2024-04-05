@@ -25,9 +25,9 @@ const SearchPage = () => {
 				</div>
 			</div>
 
-			<div className='w-full flex items-center justify-center md:hidden'>
-				<div className="search-bar">
-					<input type="text" className="dark:bg-slate-900 dark:border-gray-500 dark:text-white" placeholder="Search Tasks..." value={searchTerm} onChange={handleSearchChange} ref={searchInputRef} />
+			<div className='w-full flex items-center justify-center px-3 mb-5'>
+				<div className="h-12 max-w-[430px] w-full block md:hidden">
+					<input type="text" className="h-full w-full rounded-full text-base outline-none focus:border-purpleP bg-transparent text-gray-500 border border-gray-300 px-5 dark:text-white" placeholder="Search Tasks..." value={searchTerm} onChange={handleSearchChange} ref={searchInputRef} />
 				</div>
 			</div>
 
@@ -43,7 +43,7 @@ const SearchPage = () => {
    						loading={loading} 
 						getTasks={getTasks} />
 			</div>
-		</>
+		</>  
 	)
 }
 
