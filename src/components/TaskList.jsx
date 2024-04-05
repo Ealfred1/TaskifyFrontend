@@ -76,7 +76,7 @@ const TaskList = ({ data, loading, className, getTasks }) => {
 							<input type="checkbox" className="accent-slate-900 dark:accent-white translate-y-2" onChange={() => handleTaskCompleted(task.id, task.completed)} checked={task.completed} />
 							<label className={`task-label-2 ${task.completed ? 'line-through' : ''}`}>{ task.title }</label>
 							<div className="flex">
-								<p className="text-[9.5px] pl-3 dark:text-gray-300"><i className="pi pi-calendar-minus text-[9.5px]"></i> { humanizeTime(task.due_date) }</p>
+								<p className={`text-[9.5px] pl-3 dark:text-gray-300 ${new Date(task.due_date) < new Date() ? 'text-red-500' : ''}`}><i className="pi pi-calendar-minus text-[9.5px]"></i>  { new Date(task.due_date) < new Date() ? 'Overdue' : '' } { humanizeTime(task.due_date) }</p>
 								{ task.reminder.length > 0 &&  (<p className="text-[9.5px] pl-3 dark:text-gray-300 translate-y-[1px]"><i className="pi pi-stopwatch text-[9.5px]"></i> { task.reminder }</p>) }
 							</div>
 						</div>
