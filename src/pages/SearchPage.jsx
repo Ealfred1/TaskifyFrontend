@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import axiosPrivate from '../api/axiosPrivate';
 import TaskList from '../components/TaskList'
 import useTasks from '../hooks/useTasks';
+import Image from '../assets/searching.png'
 
 const SearchPage = () => {
 	const { taskData, loading, getTasks } = useTasks()
@@ -23,6 +24,19 @@ const SearchPage = () => {
 					<input type="text" className="dark:bg-slate-900 dark:border-gray-500 dark:text-white" placeholder="Search Tasks..." value={searchTerm} onChange={handleSearchChange} ref={searchInputRef} />
 				</div>
 			</div>
+
+			<div className='w-full flex items-center justify-center md:hidden'>
+				<div className="search-bar">
+					<input type="text" className="dark:bg-slate-900 dark:border-gray-500 dark:text-white" placeholder="Search Tasks..." value={searchTerm} onChange={handleSearchChange} ref={searchInputRef} />
+				</div>
+			</div>
+
+			{ searchTerm.length < 1 && 
+				<div className="flex items-center justify-center flex-col">
+					<img src={Image} alt="search" />
+					<h1 className="dark:text-white text-2xl">Looking for tasks?</h1>
+				</div>
+			}
 			<div className="px-2">
 				<TaskList data={taskData.length > 0 && searchTerm.length > 0 && taskData.filter((item) =>
     					item.title.toLowerCase().includes(searchTerm.toLowerCase()))}
