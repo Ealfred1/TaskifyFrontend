@@ -8,8 +8,8 @@ const CalendarPage = () => {
 	console.log(date)
 
 	return (
-		<div className="flex justify-center w-full">
-          <Calendar className="" value={date} onChange={(e) => setDate(e.value)} inline showWeek />
+		<div className="w-full px-2">
+          <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline showWeek />
           {/*<Dropdown />*/}
       </div>
 	)
