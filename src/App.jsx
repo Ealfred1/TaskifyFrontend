@@ -12,6 +12,7 @@ import CategoryDetailPage from './pages/CategoryDetailPage'
 import CalendarPage from './pages/CalendarPage'
 import SearchPage from './pages/SearchPage'
 import ProjectPage from './pages/ProjectPage'
+import SettingPage from './pages/SettingPage'
 import RequireAuth from './components/RequireAuth'
 
 
@@ -35,6 +36,7 @@ const App = () => {
             <Route path='/calendar' element={<CalendarPage />} />
             <Route path='/search' element={<SearchPage />} />
             <Route path='/projects' element={<ProjectPage />} />
+            <Route path='/settings' element={<SettingPage />} />
           </Route>
         </Route>
       </Routes>
