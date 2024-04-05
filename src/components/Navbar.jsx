@@ -15,7 +15,6 @@ const Navbar = ({ handleSideBarToggle, closed }) => {
     } else {
       setDisplay('')
     }
-    console.log(pathname)
   }, [pathname])
   
   return (
