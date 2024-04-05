@@ -71,10 +71,10 @@ const TaskList = ({ data, loading, className, getTasks }) => {
 		<TaskDetail open={openDetail} setOpen={setOpenDetail} id={detailId} />
 			<div className="space-y-2">
 				{ data.length > 0 && data.map((task) => (
-					<div className="flex items-center justify-between px-2 rounded-xl task-list relative h-20" key={task.id}>
+					<div className={`flex items-center justify-between px-2 rounded-xl task-list relative h-20 ${task.completed ? 'opacity-70' : ''}`} key={task.id}>
 						<div className="space-x-3">
 							<input type="checkbox" className="accent-slate-900 dark:accent-white translate-y-2" onChange={() => handleTaskCompleted(task.id, task.completed)} checked={task.completed} />
-							<label className="task-label-2">{ task.title }</label>
+							<label className={`task-label-2 ${task.completed ? 'line-through' : ''}`}>{ task.title }</label>
 							<div className="flex">
 								<p className="text-[9.5px] pl-3 dark:text-gray-300"><i className="pi pi-calendar-minus text-[9.5px]"></i> { humanizeTime(task.due_date) }</p>
 								{ task.reminder.length > 0 &&  (<p className="text-[9.5px] pl-3 dark:text-gray-300 translate-y-[1px]"><i className="pi pi-stopwatch text-[9.5px]"></i> { task.reminder }</p>) }
