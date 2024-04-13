@@ -21,7 +21,7 @@ const SearchPage = () => {
 		<>
 			<div className='w-full flex items-center justify-center'>
 				<div className="search-bar fixed top-3 md:-translate-x-10 z-[1000] translate-y-[1px]">
-					<input type="text" className="dark:bg-slate-900 dark:border-gray-500 dark:text-white" placeholder="Search Tasks..." value={searchTerm} onChange={handleSearchChange} ref={searchInputRef} />
+					<input type="text" className="dark:bg-slate-900 dark:border-gray-500 dark:text-white" placeholder="Search Tasks..." value={searchTerm} onChange={handleSearchChange} ref={searchInputRef} autofocus="true" />
 				</div>
 			</div>
 

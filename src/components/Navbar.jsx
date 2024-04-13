@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons'
 import Image from '../assets/profile.jpeg'
@@ -8,6 +9,11 @@ import { useLocation } from 'react-router-dom'
 const Navbar = ({ handleSideBarToggle, closed }) => {
   const { pathname } = useLocation();
   const [display, setDisplay] = useState('')
+  const navigate = useNavigate()
+
+  const handleNavigate = () => {
+    navigate('/search')
+  }
 
   useEffect(() => {
     if (pathname === '/search') {
@@ -24,7 +30,7 @@ const Navbar = ({ handleSideBarToggle, closed }) => {
         <h2 className="text-2xl">Taskify</h2>
       </div>
       
-      <div className={`search-bar ${display}`}>
+      <div className={`search-bar ${display}`} onClick={() => handleNavigate()}>
         <input type="text" className="dark:bg-transparent dark:border-gray-500 dark:text-white" placeholder="Search..." />
       </div>
       

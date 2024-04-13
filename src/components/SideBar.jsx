@@ -78,7 +78,7 @@ const SideBar = ({ sideBarClose, handleSideBarToggle }) => {
           </li>
 
           
-          <li className="item">
+{/*          <li className="item">
             <Link to="/tasks/filter" className={`nav_link ${isActive('/tasks/filter')}`} title='Filter Task'>
               <span className="navlink_icon">
                 <i className="bx bx-filter"></i>
@@ -86,7 +86,7 @@ const SideBar = ({ sideBarClose, handleSideBarToggle }) => {
               <span className="navlink">Filter Task</span>
             </Link>
           </li>
-
+*/}
           <li className="item">
             <Link to="/settings" className={`nav_link ${isActive('/settings')}`} title='Settings'>
               <span className="navlink_icon">
