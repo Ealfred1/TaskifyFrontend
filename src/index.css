@@ -253,7 +253,6 @@
 
 
 
-
   .error-message {
     @apply bg-red-300 bg-opacity-50 w-full -ml-0.5 px-4 py-2 rounded-lg text-sm h-10 text-red-600 dark:text-red-200 border border-red-500 transition-all duration-200 ease-in-out mb-2;
   }

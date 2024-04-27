@@ -72,7 +72,7 @@ const TaskList = ({ data, loading, className, getTasks }) => {
 			<div className="space-y-2">
 				{ data.length > 0 && data.map((task) => (
 					<div className={`flex items-center justify-between px-2 rounded-xl task-list relative h-20 ${task.completed ? 'opacity-70' : ''}`} key={task.id}>
-						<div className="space-x-3">
+						<div className="space-x-3 z-[2]">
 							<input type="checkbox" className="accent-slate-900 dark:accent-white translate-y-2" onChange={() => handleTaskCompleted(task.id, task.completed)} checked={task.completed} />
 							<label className={`task-label-2 ${task.completed ? 'line-through' : ''}`}>{ task.title }</label>
 							<div className="flex">
@@ -82,13 +82,14 @@ const TaskList = ({ data, loading, className, getTasks }) => {
 						</div>
 						<div className="">
 							{/* add the user team pics here */}
+
 						</div>
 						<div className="flex items-center relative cursor-pointer">
-							<button className="w-[2rem] h-[2rem] flex items-center justify-center rounded-full hover:bg-purpleP bg-opacity-100 text-right text-white" onClick={() => handleMenuClick(task.id)}><span className="pi pi-ellipsis-v text-lg md:text-xl"></span></button>
-							<div className={`w-[10rem] h-[5rem] py-2 duration-500 absolute top-8 right-0 bg-[rgba(0,0,0,0.4)] backdrop-blur-2xl rounded-md flex flex-col z-[1] ${openMenu && menuId === task.id ? 'scale-[1]' : 'scale-[0]'}`} onClick={() => setOpenMenu(false)}>
-							<a className="text-center w-full pt-1 rounded-t-md text-gray-300 h-[2rem] hover:bg-[rgba(255,255,255,0.1)]" onClick={() => handleOpenDetail(task.id)}>Edit</a>
-							<a className="text-center w-full pt-1 rounded-b-md h-[2rem] text-gray-300 hover:bg-[rgba(255,255,255,0.1)]" onClick={() => handleTaskDelete(task.id)}>Delete</a>
-						</div>
+							<button className="w-[2rem] h-[2rem] relative flex items-center justify-center rounded-full hover:bg-purpleP bg-opacity-100 text-right text-white" onClick={() => handleMenuClick(task.id)}><span className="pi pi-ellipsis-v text-lg md:text-xl"></span></button>
+							<div className={`w-[10rem] h-[5rem] py-2 duration-500 absolute top-8 right-0 bg-[rgba(0,0,0,0.4)] backdrop-blur-2xl rounded-md flex flex-col border border-blue-500 z-[1] ${openMenu && menuId === task.id ? 'scale-[1]' : 'scale-[0]'}`} onClick={() => setOpenMenu(false)}>
+								<a className="text-center w-full pt-1 rounded-t-md text-gray-300 h-[2rem] hover:bg-[rgba(255,255,255,0.1)]" onClick={() => handleOpenDetail(task.id)}>Edit</a>
+								<a className="text-center w-full pt-1 rounded-b-md h-[2rem] text-gray-300 hover:bg-[rgba(255,255,255,0.1)]" onClick={() => handleTaskDelete(task.id)}>Delete</a>
+							</div>
 						</div>
 					</div>
 				)) }
