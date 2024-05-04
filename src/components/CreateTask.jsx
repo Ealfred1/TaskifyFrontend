@@ -85,7 +85,7 @@ const CreateTask = ({ toggle, handleToggle, categoryDetail, categoryTask }) => {
 
 	return (
 		<>
-			<div className={`absolute inset-0 flex items-center justify-center menu ${toggle ? 'toggle' : '' }`}>
+			<div className={`absolute inset-0 z-[9999] flex items-center justify-center menu ${toggle ? 'toggle' : '' }`}>
 				<form method="post" onSubmit={handleSubmit} className={`w-[95%] md:w-[60%] lg:w-[40%] bg-slate-50 dark:bg-slate-900 border border-gray-200 dark:border-none dark:outline dark:outline-[1px] dark:outline-gray-500 h-[70%] flex flex-col fixed z-[1] rounded-lg shadow-2xl menu ${toggle ? 'toggle' : '' }`}>
 					<div className="overflow-auto pb-20 task-create-con mt-1 px-2">
 					<div className="flex text-gray-800 items-center justify-center new relative py-2 mb-5">

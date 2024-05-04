@@ -72,7 +72,7 @@ const TaskList = ({ data, loading, className, getTasks }) => {
 			<div className="space-y-2">
 				{ data.length > 0 && data.map((task) => (
 					<div className={`flex items-center justify-between px-2 rounded-xl task-list relative h-20 ${task.completed ? 'opacity-70' : ''}`} key={task.id}>
-						<div className="space-x-3 z-[2]">
+						<div className="space-x-3">
 							<input type="checkbox" className="accent-slate-900 dark:accent-white translate-y-2" onChange={() => handleTaskCompleted(task.id, task.completed)} checked={task.completed} />
 							<label className={`task-label-2 ${task.completed ? 'line-through' : ''}`}>{ task.title }</label>
 							<div className="flex">

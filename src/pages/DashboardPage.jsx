@@ -69,8 +69,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-         <div className={`lg:w-[60%] w-[100%] h-80 sm:h-96 rounded-2xl mr-2 md:mr-4 lg:mr-0 lg:border-none shadow-2xl dark:shadow-black shadow-gray-400`}>
-          <Calendar className="w-full" value={date} onChange={(e) => setDate(e.value)} inline />
+         <div className={`lg:w-[60%] w-[100%] h-80 sm:h-96 rounded-2xl md:mr-2 lg:mr-0 lg:border-none shadow-2xl dark:shadow-black shadow-gray-400`}>
+          <Calendar className="w-full h-80 sm:h-96 lg:h-auto" value={date} onChange={(e) => setDate(e.value)} inline />
         </div>
       </div>
 

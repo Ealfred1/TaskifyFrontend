@@ -8,6 +8,7 @@ const SearchPage = () => {
 	const { taskData, loading, getTasks } = useTasks()
 	const [searchTerm, setSearchTerm] = useState('')
 	const searchInputRef = useRef(null)
+	const [message, setMessage] = useState("")
 
 	const handleSearchChange = (e) => {
 		setSearchTerm(e.target.value);
