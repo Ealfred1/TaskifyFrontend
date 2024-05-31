@@ -7,6 +7,7 @@ import axiosPrivate from '../api/axiosPrivate'
 import UpcomingTasks from '../components/UpcomingTasks'
 import CategoryList from '../components/CategoryList'
 import TaskList from '../components/TaskList'
+import Music from '../assets/music.mp3'
 
 const Dashboard = () => {
   const { auth } = useAuth()
@@ -15,6 +16,19 @@ const Dashboard = () => {
   const [greeting, setGreeting] = useState('')
   const [currentDate, setCurrentDate] = useState('')
   const [date, setDate] = useState(null)
+
+    useEffect(() => {
+        // Create an audio element and play the background music
+        const audio = new Audio(Music);
+        audio.play();
+        console.log("playing")
+
+        // Clean up the audio element on component unmount
+        return () => {
+            audio.pause();
+            audio.currentTime = 0;
+        };
+    }, []);
   
 
   useEffect(() => {
