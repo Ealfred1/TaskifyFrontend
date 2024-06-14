@@ -17,18 +17,18 @@ const Dashboard = () => {
   const [currentDate, setCurrentDate] = useState('')
   const [date, setDate] = useState(null)
 
-    useEffect(() => {
-        // Create an audio element and play the background music
-        const audio = new Audio(Music);
-        audio.play();
-        console.log("playing")
+    // useEffect(() => {
+    //     // Create an audio element and play the background music
+    //     const audio = new Audio(Music);
+    //     audio.play();
+    //     console.log("playing")
 
-        // Clean up the audio element on component unmount
-        return () => {
-            audio.pause();
-            audio.currentTime = 0;
-        };
-    }, []);
+    //     // Clean up the audio element on component unmount
+    //     return () => {
+    //         audio.pause();
+    //         audio.currentTime = 0;
+    //     };
+    // }, []);
   
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const speakWelcome = () => {
-      const message = new SpeechSynthesisUtterance(`Hello there!`)
+      const message = new SpeechSynthesisUtterance(`Hello there! Welcome to Taskify!!!`)
       window.speechSynthesis.speak(message)
     }
     speakWelcome()
